@@ -1,4 +1,4 @@
-package bctsoft.pageobject.base;
+/*package bctsoft.pageobject.base;
 
 
 import org.openqa.selenium.By;
@@ -11,6 +11,7 @@ import java.util.List;
  * la version de Selenium
  * @author eduardo.araya
  */
+/*
 public class SeleniumBase {
 
     //atributos
@@ -65,3 +66,5 @@ public class SeleniumBase {
 
 
 }
+
+ */

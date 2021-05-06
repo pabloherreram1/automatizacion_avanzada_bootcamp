@@ -1,4 +1,4 @@
-package bctsoft.pageobject.pages;
+/*package bctsoft.pageobject.pages;
 
 import bctsoft.pageobject.base.SeleniumBase;
 import org.openqa.selenium.By;
@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
  * URL: https://jetsmart.com/cl/es/
  * HomePage para automatizacion de casos de Pruebas
  */
+/*
 public class JetSmartHomePage extends SeleniumBase {
 
     public JetSmartHomePage(WebDriver driver) {
@@ -39,3 +40,5 @@ public class JetSmartHomePage extends SeleniumBase {
     }
 
 }
+
+ */
