@@ -1,4 +1,5 @@
-package bctsoft.Grupo5.pageobject.base;
+package bctsoft.grupo5.pageobject.base;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,36 +10,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+
 /**
  * Clase Base de Selenium, para poder enmascarar
  * la version de Selenium
+ * @author eduardo.araya
  */
+
 public class SeleniumBase {
+
     //atributos
     protected WebDriver driver;
 
     //Constructor Base
-    public SeleniumBase(WebDriver driver){
+    public SeleniumBase(WebDriver driver) {
         this.driver = driver;
     }
 
     //Envoltorios Wrapper
-    public WebElement findElement(By locator){
+    public WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
-
     public WebElement findElement(By locator, WebElement element){
         return element.findElement(locator);
     }
 
-    public List<WebElement> findElements (By locator){
+
+    public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
     public List<WebElement> findElements (By locator, WebElement element){
         return element.findElements(locator);
     }
 
-    public String getText (By locator){
+
+
+    public String getText(By locator) {
         return driver.findElement(locator).getText();
     }
 
@@ -48,16 +55,15 @@ public class SeleniumBase {
     public String getAttribute (WebElement element,String tyoeOfAttribute){
         return element.getAttribute(tyoeOfAttribute);
     }
-
-    public void type(String inputText, By locator){
+    public void type(String inputText, By locator) {
         driver.findElement(locator).sendKeys(inputText);
     }
 
-    public void click(By locator){
+    public void click(By locator) {
         driver.findElement(locator).click();
     }
 
-    public void closeDriver(){
+    public void closeDriver() {
         driver.close();
     }
 
@@ -91,18 +97,17 @@ public class SeleniumBase {
         waiter.until(ExpectedConditions.numberOfElementsToBe(locator,numberOfElements));
     }
 
-    public void goToUrl(String url){
+    public void goToUrl(String url) {
         driver.get(url);
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.getTitle();
     }
 
     public void sleep(int millisegundos) throws InterruptedException {
         Thread.sleep(500);
     }
-
     public void waitElementDesappear(By locator){
         List<WebElement> loader = findElements(locator);
         while (loader.size()>0){
@@ -130,8 +135,5 @@ public class SeleniumBase {
         By selector =By.cssSelector(txtAnterior+parametro+txtPosterior);
         return selector;
     }
-
-
-
 
 }

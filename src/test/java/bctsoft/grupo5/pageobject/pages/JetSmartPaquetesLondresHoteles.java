@@ -1,9 +1,9 @@
-package bctsoft.Grupo5.pageobject.pages;
+package bctsoft.grupo5.pageobject.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import bctsoft.Grupo5.pageobject.base.SeleniumBase;
+import bctsoft.grupo5.pageobject.base.SeleniumBase;
 
 public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     public JetSmartPaquetesLondresHoteles(WebDriver driver) {
@@ -68,3 +68,5 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
         }
     }
 }
+
+

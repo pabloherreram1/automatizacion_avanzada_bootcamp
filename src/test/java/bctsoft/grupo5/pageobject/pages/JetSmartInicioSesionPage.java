@@ -1,8 +1,8 @@
-package bctsoft.Grupo5.pageobject.pages;
+package bctsoft.grupo5.pageobject.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import bctsoft.Grupo5.pageobject.base.SeleniumBase;
+import bctsoft.grupo5.pageobject.base.SeleniumBase;
 
 
 public class JetSmartInicioSesionPage extends SeleniumBase{
@@ -29,3 +29,5 @@ public class JetSmartInicioSesionPage extends SeleniumBase{
         }
     }
 }
+
+

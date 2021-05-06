@@ -1,10 +1,11 @@
-package bctsoft.Grupo5.testcases;
+package bctsoft.grupo5.testcases;
 
-import bctsoft.Grupo5.pageobject.pages.*;
-import bctsoft.Grupo5.testcases.TestBase;
-import org.junit.Test;
+import bctsoft.grupo5.pageobject.pages.JetSmartHomePage;
+import bctsoft.grupo5.pageobject.pages.JetSmartInicioSesionPage;
+import org.testng.annotations.Test;
 
-public class atc01_VueloBajo extends TestBase{
+
+public class atc01_VueloBajo extends TestBase {
 
     protected JetSmartHomePage jsHomePage;
     protected JetSmartInicioSesionPage InicioSesionPage;
@@ -21,7 +22,10 @@ public class atc01_VueloBajo extends TestBase{
         InicioSesionPage.iniciarSesion();
 
         jsHomePage.formVueloBajo();
+
+
     }
 
 
 }
+

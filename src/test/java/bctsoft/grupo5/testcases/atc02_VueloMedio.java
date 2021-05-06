@@ -1,12 +1,12 @@
-package bctsoft.Grupo5.testcases;
-import bctsoft.Grupo5.pageobject.pages.*;
-import bctsoft.Grupo5.testcases.TestBase;
-import org.junit.Test;
+package bctsoft.grupo5.testcases;
 
 import java.text.ParseException;
+import bctsoft.grupo5.pageobject.pages.JetSmartHomePage;
+import bctsoft.grupo5.pageobject.pages.JetSmartInicioSesionPage;
+import org.testng.annotations.Test;
 
 public class atc02_VueloMedio extends TestBase{
-    protected bctsoft.Grupo5.pageobject.pages.JetSmartHomePage jsHomePage;
+    protected JetSmartHomePage jsHomePage;
     protected JetSmartInicioSesionPage InicioSesionPage;
 
     @Test
@@ -22,5 +22,9 @@ public class atc02_VueloMedio extends TestBase{
 
         jsHomePage.formVueloMedio();
 
+
+
     }
 }
+
+

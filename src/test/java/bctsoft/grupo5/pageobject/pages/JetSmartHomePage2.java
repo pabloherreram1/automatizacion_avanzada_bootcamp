@@ -1,6 +1,6 @@
-package bctsoft.pageobject.pages;
+package bctsoft.grupo5.pageobject.pages;
 
-import bctsoft.pageobject.base.SeleniumBase;
+import bctsoft.grupo5.pageobject.base.SeleniumBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
  * HomePage para automatizacion de casos de Pruebas
  */
 
-public class JetSmartHomePage extends SeleniumBase {
+public class JetSmartHomePage2 extends SeleniumBase {
 
-    public JetSmartHomePage(WebDriver driver) {
+    public JetSmartHomePage2(WebDriver driver) {
         super(driver);
     }
 

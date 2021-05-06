@@ -1,4 +1,4 @@
-package bctsoft.Grupo5.testcases;
+package bctsoft.grupo5.testcases;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

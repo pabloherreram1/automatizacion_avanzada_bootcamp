@@ -1,16 +1,13 @@
-package bctsoft.Grupo5.pageobject.pages;
-
+package bctsoft.grupo5.pageobject.pages;
 import org.openqa.selenium.*;
-import bctsoft.Grupo5.pageobject.base.SeleniumBase;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import bctsoft.grupo5.pageobject.base.SeleniumBase;
 import java.text.ParseException;
 
 /**
  * URL: https://jetsmart.com/cl/es/
  * HomePage para automatizacion de casos de Pruebas
  */
+
 public class JetSmartHomePage extends SeleniumBase{
 
     public JetSmartHomePage(WebDriver driver) {
@@ -329,6 +326,8 @@ public class JetSmartHomePage extends SeleniumBase{
     }
 
 }
+
+
 
 
 

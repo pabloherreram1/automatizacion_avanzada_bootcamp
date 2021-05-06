@@ -2,7 +2,10 @@
 <suite name="Bootcamp Tsoft">
     <test name="Navegador Chrome: Web">
         <classes>
-            <class name="testcases.atc01_testCase"></class>
+            <class name="bctsoft.grupo5.testcases.atc01_VueloBajo"></class>
+            <class name="bctsoft.grupo5.testcases.atc01_testCase"></class>
+            <class name="bctsoft.grupo5.testcases.atc02_VueloMedio"></class>
+            <class name="bctsoft.grupo5.testcases.atc03_VueloAlto"></class>
         </classes>
     </test>
 </suite>
