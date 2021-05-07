@@ -1,6 +1,8 @@
 package bctsoft.grupo5.pageobject.pages;
 import org.openqa.selenium.*;
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.text.ParseException;
 import java.util.List;
 
@@ -86,6 +88,15 @@ public class JetSmartHomePage extends SeleniumBase{
     private By listHorarioVuelta = By.cssSelector("#ct-time-picker-drop-off-input");
     private By listPasajeroTraslado = By.cssSelector("#passenger-number-input");
     private By btnBuscarTraslado = By.cssSelector("button.ct-btn.ct-btn-p");
+
+    private By containerCalendar = By.cssSelector("div.ct-calendar-container table");
+    private By mesMostradoT = By.cssSelector("div.ctc-calendar__title");
+    private By btnNextT = By.cssSelector("div.ctc-calendar__nav--next");
+    private By diaDisponibleCT = By.cssSelector("div.ct-calendar-container td:not(.ct-disabled");
+    private By primerElementoLT = By.cssSelector("#item-0-0");
+    private By btnHorario = By.cssSelector("#ct-time-picker-pick-up-option-78");
+    private By cantidadPasajeros1 = By.cssSelector("div[list] li[aria-label*='1']");
+
 
 
 
@@ -225,7 +236,7 @@ public class JetSmartHomePage extends SeleniumBase{
             clearTxtFromInput(txtDestinoHotel);
             type("Londres", txtDestinoHotel);
             click(calendarIdaHotel);
-            elegirPrimerDiaDisponible();
+            elegirPrimerDiaDisponible(calendarIdaHotel,nombreDelMes,calendarioHotel,diaDelMes);
 
             click(calendarVueltaHotel);
             //proceso calendar VUELTA 2 semanas
@@ -246,8 +257,7 @@ public class JetSmartHomePage extends SeleniumBase{
             clearTxtFromInput(txtDestinoHotel);
             type("Londres", txtDestinoHotel);
             click(calendarIdaHotel);
-            elegirPrimerDiaDisponible();
-
+            elegirPrimerDiaDisponible(calendarIdaHotel,nombreDelMes,calendarioHotel,diaDelMes);
             click(calendarVueltaHotel);
             //proceso calendar VUELTA 2 semanas
             elegirCheckOutEn2Semanas();
@@ -269,7 +279,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void elegirPrimerDiaDisponible() throws ParseException {
+    public void elegirPrimerDiaDisponible(By selectorDeIda, By nombreDelMes,By calendarioDelIfreme,By diasDelMes) throws ParseException {
         //Array de meses para comparar.
         String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
                 "septiembre","octubre","noviembre","diciembre"};
@@ -285,10 +295,10 @@ public class JetSmartHomePage extends SeleniumBase{
 
         dayWantedIda = dayWantedIda.replaceFirst("^0*", "");
         String mesABuscarIda = nombresDeMeses[month-1];
-        click(calendarIdaHotel);
-        WebElement calendario = findElement(calendarioHotel);
+        click(selectorDeIda);
+        WebElement calendario = findElement(calendarioDelIfreme);
         String nombreMes = getText(nombreDelMes,calendario);
-        for (WebElement dia : findElements(diaDelMes)) {
+        for (WebElement dia : findElements(diasDelMes)) {
             String numeroDia = dia.getText();
             if (numeroDia.equals(dayWantedIda)){
                 dia.click();
@@ -329,6 +339,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
 
     }
+
     //Traslado(Transporte)
 
     public void formTrasladoAlto(){
@@ -371,21 +382,71 @@ public class JetSmartHomePage extends SeleniumBase{
 
         }
     }
-    public void formTrasladoBajo(){
+
+    public void formTrasladoBajo() throws ParseException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
-        }
-        if (isDisplayed(IframeTraslado)){
+            cambiarAiframe(IframeTraslado);
             click(radiobtnIda);
             type("Santiago", txtAeropuertoOrigen);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
             type("La Serena", txtAeropuertoDestino);
-            click(calendarRecogidaTraslado);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
+            waitElementToBeClickable(containerCalendar, 5);
             // mñn
+            elegirPrimerDiaDisponibleT();
             click(listHorarioIda);
             //13pm
-            click(btnTraslado);
+            waitElementToBeClickable(btnHorario, 5);
+            click(btnHorario);
+            waitElementToBeClickable(cantidadPasajeros1, 5);
+            click(cantidadPasajeros1);
+            click(btnBuscarTraslado);
+            salirDelIframe();
+            cambiarDeTab(1);
         }
     }
+
+    public void elegirPrimerDiaDisponibleT() throws ParseException {
+        String actualDate = obtenerDia(); //Hoy retorna "2021-05-04"
+        String fechaActual[] = actualDate.split("-");
+        String actualDay = fechaActual[2];
+        actualDay = actualDay.replaceFirst("^0*", "");
+
+        //Array de meses para comparar.
+        String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
+                "septiembre","octubre","noviembre","diciembre"};
+
+        String diaActual = obtenerDia();
+        String diaSiguiente = obtenerDiaCambiado(diaActual, 1);
+        String fechaEntera[] = diaSiguiente.split("-");
+        int month = Integer.parseInt(fechaEntera[1]);
+        String diaABuscar = fechaEntera[2];
+        diaABuscar = diaABuscar.replaceFirst("^0*", "");
+
+        String palabraABuscar = nombresDeMeses[month-1];
+        palabraABuscar = palabraABuscar.toUpperCase();
+        waitElementToBePresent(containerCalendar,5);
+        String mesMostrado = getText(mesMostradoT);
+        while (!mesMostrado.contains(palabraABuscar)){
+            click(btnNextT);
+            mesMostrado = getText(mesMostradoT);
+        }
+
+        waitElementToBePresent(diaDisponibleCT,5);
+        for (WebElement dia: findElements(diaDisponibleCT)) {
+            String atributoAriaLabe = getAttribute(dia,"aria-label");//dia.getAttribute("aria-label");
+            if(atributoAriaLabe.contains(diaABuscar)){
+                dia.click();
+                break;
+            }
+
+        }
+    }
+
+
 
 
     //Funciones xD ojito
