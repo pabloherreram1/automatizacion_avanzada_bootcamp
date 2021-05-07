@@ -1,10 +1,8 @@
 package bctsoft.grupo5.pageobject.pages;
 import org.openqa.selenium.*;
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.text.ParseException;
-import java.util.List;
 
 /**
  * URL: https://jetsmart.com/cl/es/
@@ -94,8 +92,11 @@ public class JetSmartHomePage extends SeleniumBase{
     private By btnNextT = By.cssSelector("div.ctc-calendar__nav--next");
     private By diaDisponibleCT = By.cssSelector("div.ct-calendar-container td:not(.ct-disabled");
     private By primerElementoLT = By.cssSelector("#item-0-0");
-    private By btnHorario = By.cssSelector("#ct-time-picker-pick-up-option-78");
+    private By btnHorario1pm = By.cssSelector("#ct-time-picker-pick-up-option-78");
+    private By btnHorario9am = By.cssSelector("#ct-time-picker-pick-up-option-54");
+    private By btnHorario10am = By.cssSelector("#ct-time-picker-pick-up-option-60");
     private By cantidadPasajeros1 = By.cssSelector("div[list] li[aria-label*='1']");
+    private By cantidadPasajeros2 = By.cssSelector("div[list] li[aria-label*='2']");
 
 
 
@@ -342,44 +343,62 @@ public class JetSmartHomePage extends SeleniumBase{
 
     //Traslado(Transporte)
 
-    public void formTrasladoAlto(){
+    public void formTrasladoAlto() throws ParseException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
         }
         if (isDisplayed(IframeTraslado)){
-            click(radiobtnIda);
-            type("Ezeiza", txtAeropuertoOrigen);
-            type("Newbery", txtAeropuertoDestino);
-            click(calendarRecogidaTraslado);
-            //fecha ida 30 dias -> actual
-            click(listHorarioIda);
-            //Selecionar 9am
-            click(listPasajeroTraslado);
-            //Selecionar 2 pasajeros
             click(btnTraslado);
-
+            cambiarAiframe(IframeTraslado);
+            type("Santiago", txtAeropuertoOrigen);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
+            type("La Serena", txtAeropuertoDestino);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
+            waitElementToBeClickable(containerCalendar, 5);
+            elegirFechaDespDe(30);
+            waitElementToBeClickable(btnHorario9am, 5);//13pm
+            click(btnHorario9am);
+            waitElementToBeClickable(cantidadPasajeros2, 5);
+            click(cantidadPasajeros2);
+            click(btnBuscarTraslado);
+            salirDelIframe();
+            cambiarDeTab(1);
         }
     }
-    public void formTrasladoMedio(){
+    public void formTrasladoMedio() throws ParseException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
         }
         if (isDisplayed(IframeTraslado)){
-            click(radiobtnIdaVuelta);
-            type("Ezeiza", txtAeropuertoOrigen);
-            type("Bogota Colombia", txtAeropuertoDestino);
-            click(calendarRecogidaTraslado);
-            //fecha ida 30 dias -> actual
-            click(listHorarioIda);
-            //Selecionar 9am
-            click(calendarVueltaTraslado);
-            //Fecha 1 dia despues de la fecha ida
-            click(listHorarioVuelta);
-            //Selecionar 10am
-            click(listPasajeroTraslado);
-            //Selecionar 1 pasajeros
             click(btnTraslado);
-
+            click(radiobtnIdaVuelta);
+            cambiarAiframe(IframeTraslado);
+            type("Ezeiza", txtAeropuertoOrigen);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
+            type("Bogota Colombia", txtAeropuertoDestino);
+            waitElementToBeClickable(primerElementoLT, 5);
+            click(primerElementoLT);
+            waitElementToBeClickable(containerCalendar, 5);
+            elegirFechaDespDe(30);
+            //Selecionar 9am
+            waitElementToBeClickable(btnHorario9am,5);
+            click(btnHorario9am);
+            //Fecha 1 dia despues de la fecha ida
+            waitElementToBeClickable(containerCalendar,5);
+            elegirFechaDespDe(31);
+            //Selecionar 10am
+            waitElementToBeClickable(btnHorario10am,5);
+            click(btnHorario10am);
+            //Selecionar 1 pasajeros
+            click(listPasajeroTraslado);
+            waitElementToBeClickable(cantidadPasajeros1, 5);
+            click(cantidadPasajeros1);
+            click(btnBuscarTraslado);
+            salirDelIframe();
+            cambiarDeTab(1);
         }
     }
 
@@ -395,12 +414,9 @@ public class JetSmartHomePage extends SeleniumBase{
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
             waitElementToBeClickable(containerCalendar, 5);
-            // mñn
             elegirPrimerDiaDisponibleT();
-            click(listHorarioIda);
-            //13pm
-            waitElementToBeClickable(btnHorario, 5);
-            click(btnHorario);
+            waitElementToBeClickable(btnHorario1pm, 5);//13pm
+            click(btnHorario1pm);
             waitElementToBeClickable(cantidadPasajeros1, 5);
             click(cantidadPasajeros1);
             click(btnBuscarTraslado);
@@ -446,7 +462,42 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
+    public void elegirFechaDespDe(int diasDesp) throws ParseException {
+        String actualDate = obtenerDia(); //Hoy retorna "2021-05-04"
+        String fechaActual[] = actualDate.split("-");
+        String actualDay = fechaActual[2];
+        actualDay = actualDay.replaceFirst("^0*", "");
 
+        //Array de meses para comparar.
+        String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
+                "septiembre","octubre","noviembre","diciembre"};
+
+        String diaActual = obtenerDia();
+        String diaSiguiente = obtenerDiaCambiado(diaActual, diasDesp);
+        String fechaEntera[] = diaSiguiente.split("-");
+        int month = Integer.parseInt(fechaEntera[1]);
+        String diaABuscar = fechaEntera[2];
+        diaABuscar = diaABuscar.replaceFirst("^0*", "");
+
+        String palabraABuscar = nombresDeMeses[month-1];
+        palabraABuscar = palabraABuscar.toUpperCase();
+        waitElementToBePresent(containerCalendar,5);
+        String mesMostrado = getText(mesMostradoT);
+        while (!mesMostrado.contains(palabraABuscar)){
+            click(btnNextT);
+            mesMostrado = getText(mesMostradoT);
+        }
+
+        waitElementToBePresent(diaDisponibleCT,5);
+        for (WebElement dia: findElements(diaDisponibleCT)) {
+            String atributoAriaLabe = getAttribute(dia,"aria-label");//dia.getAttribute("aria-label");
+            if(atributoAriaLabe.contains(diaABuscar)){
+                dia.click();
+                break;
+            }
+
+        }
+    }
 
 
     //Funciones xD ojito
