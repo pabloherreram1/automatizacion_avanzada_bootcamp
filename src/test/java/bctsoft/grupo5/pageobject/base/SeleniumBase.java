@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +33,7 @@ public class SeleniumBase {
     public WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
+
     public WebElement findElement(By locator, WebElement element){
         return element.findElement(locator);
     }
@@ -48,6 +51,10 @@ public class SeleniumBase {
     public String getText(By locator) {
         return driver.findElement(locator).getText();
     }
+    public String getText(By locator, WebElement element) {
+        return element.findElement(locator).getText();
+    }
+
 
     public String getAttribute (By locator,String tyoeOfAttribute){
         return driver.findElement(locator).getAttribute(tyoeOfAttribute);
@@ -105,6 +112,7 @@ public class SeleniumBase {
         return driver.getTitle();
     }
 
+
     public void sleep(int millisegundos) throws InterruptedException {
         Thread.sleep(500);
     }
@@ -130,10 +138,47 @@ public class SeleniumBase {
         actualDate = sdf.format(c.getTime());  // actualDate is now the new date with the changes.
         return actualDate;
     }
+    public static String obtenerDia(){
+        Date date = new Date(); //Retorna el dia actual en el formato que se quiere.
+        String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
+        return modifiedDate;
+    }
+    //Para obtener una fecha en particular.
+    public static String obtenerDiaCambiado(String actualDate, int numbDays) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(sdf.parse(actualDate));
+        c.add(Calendar.DATE, numbDays);  // number of days to add
+        actualDate = sdf.format(c.getTime());  // actualDate is now the new date with the changes.
+        return actualDate;
+    }
+
 
     public By obtenerSelectorParametrizado(String txtAnterior, String parametro, String txtPosterior){
         By selector =By.cssSelector(txtAnterior+parametro+txtPosterior);
         return selector;
     }
+
+    public void cambiarAiframe (By locator){
+        driver.switchTo().frame(findElement(locator));
+    }
+
+    public void clearTxtFromInput(By locator){
+        driver.findElement(locator).clear();
+    }
+
+    public void salirDelIframe(){
+        driver.switchTo().parentFrame();
+    }
+
+    public void cambiarDeTab(int numTab){
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(numTab));
+    }
+
+
+
+
+
 
 }

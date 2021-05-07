@@ -14,15 +14,22 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     private By SpanFiltros = By.cssSelector("span:not(.bui-switch__indicator");
     private By SpanLabel = By.cssSelector("span.filter_label");
     private By btnFiltroPresupuesto = By.cssSelector("span:not(.bui-switch__indicator)");
-    private By btnFiltroEstrellas = By.cssSelector("");
+    private By bodyNoHover= By.cssSelector("body.no-hover");
+    private By overlayFiltros = By.cssSelector("div.sr-usp-overlay.sr-usp-overlay--wide");
 
 
-    WebElement filtroDeseado = null;
     String filtroPresupuesto = "";
     String filtroPop = "";
     String filtroStars = "";
+    public void esperaDeResultados(){
+        waitNmberOfElementsToBe(bodyNoHover,0);
+    }
+    public void esperaDeFiltrosAplicados(){
+        waitNmberOfElementsToBe(overlayFiltros,0);
+    }
 
     public void selecionFiltroPresupuesto(){
+        WebElement filtroDeseado = null;
         for (WebElement object: findElements(ContainerFiltros)) {
             String fnlist = object.getText();
             if(fnlist.contains("Tu presupuesto (por noche)")){
@@ -36,6 +43,7 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     }
 
     public void SelecionFiltroPopulares(){
+        WebElement filtroDeseado = null;
         for (WebElement object: findElements(ContainerFiltros)) {
             String nombreFiltro = object.getText();
             if(nombreFiltro.contains("Filtros populares")){
@@ -43,7 +51,7 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
                 filtroDeseado = object;
             }
         }
-        for (WebElement filtro: findElements(SpanFiltros)) {
+        for (WebElement filtro: findElements(SpanFiltros,filtroDeseado)) {
             String nombreFiltro =  filtro.getText();
             if(nombreFiltro.contains("Hoteles")){
                 filtro.click(); //Click en el filtro DE HOTELES
@@ -53,13 +61,14 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     }
 
     public void SelecionFiltroEstrellas(){
+        WebElement filtroDeseado = null;
         for (WebElement object: findElements(ContainerFiltros)) {
             String nombreFiltro = object.getText();
             if(nombreFiltro.contains("Estrellas")){
                 filtroDeseado = object;
             }
         }
-        for (WebElement filtro: findElements(SpanFiltros)) {
+        for (WebElement filtro: findElements(SpanFiltros, filtroDeseado)) {
             String nombreFiltro =  filtro.getText();
             if(nombreFiltro.contains("3 estrellas")){
                 filtro.click(); //Click en el filtro DE 3 ESTRELLAS

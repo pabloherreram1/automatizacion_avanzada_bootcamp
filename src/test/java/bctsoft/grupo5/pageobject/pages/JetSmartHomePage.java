@@ -2,6 +2,7 @@ package bctsoft.grupo5.pageobject.pages;
 import org.openqa.selenium.*;
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
 import java.text.ParseException;
+import java.util.List;
 
 /**
  * URL: https://jetsmart.com/cl/es/
@@ -63,6 +64,10 @@ public class JetSmartHomePage extends SeleniumBase{
     private By txtDestinoHotel = By.cssSelector("#b_destination");
     private By calendarIdaHotel = By.cssSelector("#checkInDate");
     private By calendarVueltaHotel = By.cssSelector("#checkoutDate");
+    private By calendarioHotel = By.cssSelector("#ui-datepicker-div");
+    private By diaDelMes = By.cssSelector("table td:not(.ui-state-disabled)");
+    private By nombreDelMes = By.cssSelector("span.ui-datepicker-month");
+    private By btnMesSiguiente = By.cssSelector("a.ui-datepicker-next");
     private By listHabitacionHotel = By.xpath("//*[contains(@name,'no_rooms')]  ");
     private By listAdultosHotel = By.xpath("//*[contains(@name,'group_adults')]");
     private By listNinosHotel = By.cssSelector("//*[contains(@name,'group_children')]");
@@ -213,33 +218,39 @@ public class JetSmartHomePage extends SeleniumBase{
 
     //Hoteles
 
-    public void formHotelesAlto(){
+    public void formHotelesAlto() throws ParseException {
         if(isDisplayed(btnHoteles)){
             click(btnHoteles);
-        }
-        if(isDisplayed(IframeHotel)){
+            cambiarAiframe(IframeHotel);
+            clearTxtFromInput(txtDestinoHotel);
             type("Londres", txtDestinoHotel);
             click(calendarIdaHotel);
-            //proceso calendar ida
+            elegirPrimerDiaDisponible();
+
             click(calendarVueltaHotel);
-            //proceso calendar VUELTA
+            //proceso calendar VUELTA 2 semanas
+            elegirCheckOutEn2Semanas();
             click(btnBuscarHotel);
+            salirDelIframe();
+            cambiarDeTab(1);
 
             //Selecionar los 3 filtros
         }
 
 
     }
-    public void formHotelesMedio(){
+    public void formHotelesMedio() throws ParseException {
         if(isDisplayed(btnHoteles)){
             click(btnHoteles);
-        }
-        if(isDisplayed(IframeHotel)){
+            cambiarAiframe(IframeHotel);
+            clearTxtFromInput(txtDestinoHotel);
             type("Londres", txtDestinoHotel);
             click(calendarIdaHotel);
-            //proceso calendar ida mñn
+            elegirPrimerDiaDisponible();
+
             click(calendarVueltaHotel);
             //proceso calendar VUELTA 2 semanas
+            elegirCheckOutEn2Semanas();
             click(btnBuscarHotel);
 
             //Encontrar paquetes Disponibles
@@ -248,15 +259,76 @@ public class JetSmartHomePage extends SeleniumBase{
     public void formHotelesBajo(){
         if(isDisplayed(btnHoteles)){
             click(btnHoteles);
-        }
-        if(isDisplayed(IframeHotel)){
+            cambiarAiframe(IframeHotel);
+            click(txtDestinoHotel);
+            clearTxtFromInput(txtDestinoHotel);
             type("Antartica", txtDestinoHotel);
             click(btnBuscarHotel);
-
-            //No encontrar paquetes
+            salirDelIframe();
+            cambiarDeTab(1);
         }
     }
 
+    public void elegirPrimerDiaDisponible() throws ParseException {
+        //Array de meses para comparar.
+        String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
+                "septiembre","octubre","noviembre","diciembre"};
+
+        String actualDate = obtenerDia(); //Hoy retorna "2021-04-30
+        String fechaActual[] = actualDate.split("-");
+        String actualDay = fechaActual[2];
+        //Dia siguiente para la IDA
+        String tomorrowDate = obtenerDiaCambiado(actualDate, 1);
+        String fechaEntera[] = tomorrowDate.split("-");
+        int month = Integer.parseInt(fechaEntera[1]);
+        String dayWantedIda = fechaEntera[2];
+
+        dayWantedIda = dayWantedIda.replaceFirst("^0*", "");
+        String mesABuscarIda = nombresDeMeses[month-1];
+        click(calendarIdaHotel);
+        WebElement calendario = findElement(calendarioHotel);
+        String nombreMes = getText(nombreDelMes,calendario);
+        for (WebElement dia : findElements(diaDelMes)) {
+            String numeroDia = dia.getText();
+            if (numeroDia.equals(dayWantedIda)){
+                dia.click();
+                break;
+            }
+        }
+    }
+
+    public void elegirCheckOutEn2Semanas() throws ParseException {
+        //Array de meses para comparar.
+        String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
+                "septiembre","octubre","noviembre","diciembre"};
+
+        String actualDate = obtenerDia(); //Hoy retorna "2021-04-30
+        //Dia siguiente para la IDA
+        String tomorrowDate = obtenerDiaCambiado(actualDate, 1);
+        String fechaEntera[] = tomorrowDate.split("-");
+        String twoWeeks = obtenerDiaCambiado(tomorrowDate, 14);
+        String fechaTwoWeeks[] = twoWeeks.split("-");
+        int monthTW = Integer.parseInt(fechaEntera[1]);
+        String dayWantedVuelta = fechaTwoWeeks[2];
+
+        dayWantedVuelta = dayWantedVuelta.replaceFirst("^0*", "");
+        WebElement calendario = findElement(calendarioHotel);
+        String nombreMes = getText(nombreDelMes,calendario);
+        String mesABuscarVuelta = nombresDeMeses[monthTW-1];
+        click(calendarVueltaHotel);
+        while(!mesABuscarVuelta.equals(nombreMes)){
+            calendario.findElement(btnMesSiguiente).click();
+            nombreMes = getText(nombreDelMes,calendario);
+        }
+        for (WebElement dia : findElements(diaDelMes)) {
+            String numeroDia = dia.getText();
+            if (numeroDia.equals(dayWantedVuelta)){
+                dia.click();
+                break;
+            }
+        }
+
+    }
     //Traslado(Transporte)
 
     public void formTrasladoAlto(){
