@@ -346,9 +346,6 @@ public class JetSmartHomePage extends SeleniumBase{
     public void formTrasladoAlto() throws ParseException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
-        }
-        if (isDisplayed(IframeTraslado)){
-            click(btnTraslado);
             cambiarAiframe(IframeTraslado);
             type("Santiago", txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
@@ -370,11 +367,8 @@ public class JetSmartHomePage extends SeleniumBase{
     public void formTrasladoMedio() throws ParseException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
-        }
-        if (isDisplayed(IframeTraslado)){
-            click(btnTraslado);
-            click(radiobtnIdaVuelta);
             cambiarAiframe(IframeTraslado);
+            click(radiobtnIdaVuelta);
             type("Ezeiza", txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
