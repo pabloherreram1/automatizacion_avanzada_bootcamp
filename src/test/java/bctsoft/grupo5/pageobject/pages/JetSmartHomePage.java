@@ -88,7 +88,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By calendarVueltaTraslado = By.cssSelector("#input-return-date");
     private By listHorarioVuelta = By.cssSelector("#ct-time-picker-drop-off-input");
     private By listPasajeroTraslado = By.cssSelector("#passenger-number-input");
-    private By btnBuscarTraslado = By.xpath("//body/div[1]/main[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/picture[1]/img[1]");
+    private By btnBuscarTraslado = By.xpath("//button[contains(text(),'Buscar')]");
 
     private By containerCalendar = By.cssSelector("div.ct-calendar-container table");
     private By mesMostradoT = By.cssSelector("div.ctc-calendar__title");
@@ -350,10 +350,11 @@ public class JetSmartHomePage extends SeleniumBase{
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
             cambiarAiframe(IframeTraslado);
-            type("Santiago", txtAeropuertoOrigen);
+            click(radiobtnIda);
+            type("Ezeiza", txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
-            type("La Serena", txtAeropuertoDestino);
+            type("Newbery", txtAeropuertoDestino);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
             waitElementToBeClickable(containerCalendar, 5);
@@ -392,7 +393,9 @@ public class JetSmartHomePage extends SeleniumBase{
             click(listPasajeroTraslado);
             waitElementToBeClickable(cantidadPasajeros1, 5);
             click(cantidadPasajeros1);
-            click(btnBuscarTraslado);
+            WebElement ele = driver.findElement(By.cssSelector("button.ct-btn.ct-btn-p.gt-is-valid"));
+            JavascriptExecutor jse = (JavascriptExecutor)driver;
+            jse.executeScript("arguments[0].click()", ele);
             salirDelIframe();
             cambiarDeTab(1);
         }
