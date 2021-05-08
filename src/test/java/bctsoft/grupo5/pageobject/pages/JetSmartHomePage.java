@@ -1,8 +1,11 @@
 package bctsoft.grupo5.pageobject.pages;
 import org.openqa.selenium.*;
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.ParseException;
+import java.util.List;
 
 /**
  * URL: https://jetsmart.com/cl/es/
@@ -85,7 +88,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By calendarVueltaTraslado = By.cssSelector("#input-return-date");
     private By listHorarioVuelta = By.cssSelector("#ct-time-picker-drop-off-input");
     private By listPasajeroTraslado = By.cssSelector("#passenger-number-input");
-    private By btnBuscarTraslado = By.cssSelector("button.ct-btn.ct-btn-p");
+    private By btnBuscarTraslado = By.xpath("//body/div[1]/main[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/picture[1]/img[1]");
 
     private By containerCalendar = By.cssSelector("div.ct-calendar-container table");
     private By mesMostradoT = By.cssSelector("div.ctc-calendar__title");
@@ -364,7 +367,7 @@ public class JetSmartHomePage extends SeleniumBase{
             cambiarDeTab(1);
         }
     }
-    public void formTrasladoMedio() throws ParseException {
+    public void formTrasladoMedio() throws ParseException, InterruptedException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
             cambiarAiframe(IframeTraslado);
@@ -375,6 +378,7 @@ public class JetSmartHomePage extends SeleniumBase{
             type("Bogota Colombia", txtAeropuertoDestino);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
+            //Fecha 30 desp del actual
             waitElementToBeClickable(containerCalendar, 5);
             elegirFechaDespDe(30);
             //Selecionar 9am
@@ -383,9 +387,7 @@ public class JetSmartHomePage extends SeleniumBase{
             //Fecha 1 dia despues de la fecha ida
             waitElementToBeClickable(containerCalendar,5);
             elegirFechaDespDe(31);
-            //Selecionar 10am
-            waitElementToBeClickable(btnHorario10am,5);
-            click(btnHorario10am);
+
             //Selecionar 1 pasajeros
             click(listPasajeroTraslado);
             waitElementToBeClickable(cantidadPasajeros1, 5);
@@ -463,8 +465,8 @@ public class JetSmartHomePage extends SeleniumBase{
         actualDay = actualDay.replaceFirst("^0*", "");
 
         //Array de meses para comparar.
-        String[] nombresDeMeses = {"enero","febrero","marzo","mbril","mayo","junio","julio","agosto",
-                "septiembre","octubre","noviembre","diciembre"};
+        String[] nombresDeMeses = {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+                "septiembre", "octubre", "noviembre", "diciembre"};
 
         String diaActual = obtenerDia();
         String diaSiguiente = obtenerDiaCambiado(diaActual, diasDesp);
@@ -473,28 +475,32 @@ public class JetSmartHomePage extends SeleniumBase{
         String diaABuscar = fechaEntera[2];
         diaABuscar = diaABuscar.replaceFirst("^0*", "");
 
-        String palabraABuscar = nombresDeMeses[month-1];
+        String palabraABuscar = nombresDeMeses[month - 1];
         palabraABuscar = palabraABuscar.toUpperCase();
         waitElementToBePresent(containerCalendar,5);
-        String mesMostrado = getText(mesMostradoT);
-        while (!mesMostrado.contains(palabraABuscar)){
-            click(btnNextT);
+        String mesMostrado = getText(mesMostradoT);//driver.findElement(mesMostradoT).getText();
+
+        while (!mesMostrado.contains(palabraABuscar)) {
+            driver.findElement(btnNextT).click();
             mesMostrado = getText(mesMostradoT);
         }
-
-        waitElementToBePresent(diaDisponibleCT,5);
-        for (WebElement dia: findElements(diaDisponibleCT)) {
-            String atributoAriaLabe = getAttribute(dia,"aria-label");//dia.getAttribute("aria-label");
-            if(atributoAriaLabe.contains(diaABuscar)){
+        waitNumberOfElementsToBeMoreThan(diaDisponibleCT,0);
+        for (WebElement dia : findElements(diaDisponibleCT)) {
+            String atributoAriaLabel = getAttribute(dia,"aria-label");
+            if (atributoAriaLabel.contains(diaABuscar)) {
                 dia.click();
                 break;
             }
-
         }
     }
 
+    public void elegirHorarioDestino(By locator){
 
-    //Funciones xD ojito
+
+    }
+
+
+        //Funciones xD ojito
 
     public void btnInicioSesion(){
         //waitElementToBePresent(btnIniciar, 5);

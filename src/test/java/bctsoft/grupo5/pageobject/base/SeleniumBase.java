@@ -1,8 +1,6 @@
 package bctsoft.grupo5.pageobject.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -70,6 +68,23 @@ public class SeleniumBase {
         driver.findElement(locator).click();
     }
 
+    public void clickTry(By locator,int cantTrys) throws InterruptedException {
+        do{
+            try {
+                click(locator);
+            }catch (ElementClickInterceptedException e){
+                cantTrys--;
+                sleep(500);
+            }catch (StaleElementReferenceException e) {
+                cantTrys--;
+                sleep(500);
+            }catch (ElementNotInteractableException e){
+                cantTrys--;
+                sleep(500);
+            }
+        }while(cantTrys>0);
+    }
+
     public void closeDriver() {
         driver.close();
     }
@@ -102,6 +117,11 @@ public class SeleniumBase {
     public void waitNmberOfElementsToBe(By locator,int numberOfElements){
         WebDriverWait waiter = new WebDriverWait(driver,10);
         waiter.until(ExpectedConditions.numberOfElementsToBe(locator,numberOfElements));
+    }
+
+    public void waitNumberOfElementsToBeMoreThan(By locator, int cantidad){
+        WebDriverWait w1 = new WebDriverWait(driver,5);
+        w1.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator,cantidad));
     }
 
     public void goToUrl(String url) {

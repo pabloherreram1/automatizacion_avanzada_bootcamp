@@ -1,12 +1,13 @@
 package bctsoft.grupo5.testcases;
+
 import bctsoft.grupo5.pageobject.pages.JetSmartHomePage;
 import bctsoft.grupo5.pageobject.pages.JetSmartInicioSesionPage;
 import org.testng.annotations.Test;
 
-
 import java.text.ParseException;
 
-public class atc08_TrasladoMedio extends TestBase{
+
+public class atc09_TrasladoAlto extends TestBase{
     protected JetSmartHomePage jsHomePage;
     protected JetSmartInicioSesionPage InicioSesionPage;
 

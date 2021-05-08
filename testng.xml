@@ -11,6 +11,7 @@
             <class name="bctsoft.grupo5.testcases.atc06_HotelAlto"></class>
             <class name="bctsoft.grupo5.testcases.atc07_TrasladoBajo"></class>
             <class name="bctsoft.grupo5.testcases.atc08_TrasladoMedio"></class>
+            <class name="bctsoft.grupo5.testcases.atc09_TrasladoAlto"></class>
         </classes>
     </test>
 </suite>
