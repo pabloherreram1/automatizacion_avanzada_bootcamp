@@ -11,7 +11,7 @@ public class atc07_TrasladoBajo extends TestBase{
     protected JetSmartInicioSesionPage InicioSesionPage;
 
     @Test
-    public void atc07_BusquedaConResultado() throws ParseException {
+    public void atc07_BusquedaConResultado() throws ParseException, InterruptedException {
         jsHomePage = new JetSmartHomePage(driver);
         jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
         jsHomePage.cerrarModuloSuscribete();

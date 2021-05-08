@@ -1,4 +1,5 @@
 package bctsoft.grupo5.pageobject.pages;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -48,6 +49,9 @@ public class JetSmartHomePage extends SeleniumBase{
     private String txtAnteriorDiaVuelta = "div[ref='calendarInboundInside'] span[aria-label='";
     private String txtPosteriorDiaVuelta = "']:not(.nextMonthDay)";
 
+    private By noHayResultado = By.cssSelector("li.dg-typing-result-item");
+    private By listVuelos = By.cssSelector("div.fee-selector label");
+
 
     private By cajaopen = By.cssSelector("div.dg-quantity-dropdown.open");
     private By listPasajero = By.cssSelector("input[ref='paxSummary']");
@@ -75,6 +79,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By listAdultosHotel = By.xpath("//*[contains(@name,'group_adults')]");
     private By listNinosHotel = By.cssSelector("//*[contains(@name,'group_children')]");
     private By btnBuscarHotel = By.cssSelector("input[name='submit']");
+    private By dato = By.cssSelector("div.sr_header");
 
     //Repositorio Formulario Traslado(Transporte)
     private By btnTraslado = By.cssSelector("i.jsh-van");
@@ -101,6 +106,10 @@ public class JetSmartHomePage extends SeleniumBase{
     private By cantidadPasajeros1 = By.cssSelector("div[list] li[aria-label*='1']");
     private By cantidadPasajeros2 = By.cssSelector("div[list] li[aria-label*='2']");
 
+    private By resultadoTraslado = By.cssSelector("ul.ct-space-v li");
+    private By panelResultadoT = By.cssSelector("div.ct-availability div.ct-panel-title");
+    private By boxResultados = By.cssSelector("fieldset");
+    private By btnClassT   = By.xpath("//button[@class='ct-btn ct-btn-p ']");
 
 
 
@@ -214,20 +223,29 @@ public class JetSmartHomePage extends SeleniumBase{
                 }catch (StaleElementReferenceException e){
                 }
             }while(!(findElements(diaSelecionado).size()>1));
-
-
-
-
-
             click(btnBuscar);
+
+            List<WebElement> vuelos = findElements(listVuelos);
+            String vueloIDA = vuelos.get(0).getText();
+            String vueloVUELTA = vuelos.get(1).getText();
+            String resultado = vueloIDA + "\n"+vueloVUELTA;
+            //Assert.();
         }
     }
 
     public void formVueloBajo(){
         if(isDisplayed(txtOrigen)){
             type("Santiago", txtOrigen);
+            click(txtOrigen);
+            waitElementToBeClickable(findElement(esperaOrigenCL, findElement(tabVuelo)), 10);
+            click(esperaOrigenCL);
+            click(txtDestino);
             type("AAAAA", txtDestino);
-            click(btnBuscar);
+            waitElementToBeClickable(findElement(txtDestino, findElement(tabVuelo)), 10);
+
+            waitVisibilityOfElement(noHayResultado);
+            Assert.assertEquals("No hay resultados.", getText(noHayResultado));
+
         }
     }
 
@@ -280,6 +298,7 @@ public class JetSmartHomePage extends SeleniumBase{
             click(btnBuscarHotel);
             salirDelIframe();
             cambiarDeTab(1);
+            Assert.assertEquals("Hay 0 alojamientos disponibles en este destino y alrededores",getText(dato));
         }
     }
 
@@ -401,15 +420,15 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void formTrasladoBajo() throws ParseException {
+    public void formTrasladoBajo() throws ParseException, InterruptedException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
             cambiarAiframe(IframeTraslado);
             click(radiobtnIda);
-            type("Santiago", txtAeropuertoOrigen);
+            type("Santiago Chile", txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
-            type("La Serena", txtAeropuertoDestino);
+            type("La Serena Chile", txtAeropuertoDestino);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
             waitElementToBeClickable(containerCalendar, 5);
@@ -421,6 +440,10 @@ public class JetSmartHomePage extends SeleniumBase{
             click(btnBuscarTraslado);
             salirDelIframe();
             cambiarDeTab(1);
+            waitElementToBeClickable(btnClassT,10);
+            int size = findElements(resultadoTraslado).size();
+            System.out.println("el sSIZE ES ESTEEEEEEEEEE: "+ size);
+            Assert.assertEquals(11,size);
         }
     }
 

@@ -114,6 +114,11 @@ public class SeleniumBase {
         w1.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public void waitVisibilityOfElement(By locator){
+        WebDriverWait w1 = new WebDriverWait(driver,10);
+        w1.until(ExpectedConditions.visibilityOf(findElement(locator)));
+    }
+
     public void waitNmberOfElementsToBe(By locator,int numberOfElements){
         WebDriverWait waiter = new WebDriverWait(driver,10);
         waiter.until(ExpectedConditions.numberOfElementsToBe(locator,numberOfElements));
