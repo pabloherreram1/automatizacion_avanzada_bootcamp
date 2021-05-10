@@ -27,11 +27,6 @@ public class StepsModuloVueloBajoG5 {
 
     }
 
-    @When("Seleciono")
-    public void Selecionoo(String string){
-
-    }
-
     @Then("Aparece la alerta {String}")
     public void Aparece_la_alerta(String string){
 
