@@ -4,6 +4,7 @@
     Archivo Gherkin que contiene el modulo vuelo bajo de la pagina JetSmart
     estos escenario esta basadi en el punto de vista del usuario final.
 
+    @bootcamp @G5
     Scenario: El sistema no logra encontrar destino
       Given que soy un usuario e ingreso a la web "JetSmart"
       When ingreso al formulario de vuelo
