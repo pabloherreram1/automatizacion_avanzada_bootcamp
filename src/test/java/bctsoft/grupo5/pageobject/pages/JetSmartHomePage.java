@@ -520,10 +520,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void elegirHorarioDestino(By locator){
 
-
-    }
 
 
         //Funciones xD ojito

@@ -2,7 +2,7 @@
 
   Feature:Modulo Vuelo Bajo de web JetSmart Grupo5
     Archivo Gherkin que contiene el modulo vuelo bajo de la pagina JetSmart
-    estos escenario esta basadi en el punto de vista del usuario final.
+    estos escenario esta basado en el punto de vista del usuario final.
 
     @bootcamp @G5
     Scenario: El sistema no logra encontrar destino

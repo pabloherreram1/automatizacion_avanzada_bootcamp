@@ -15,13 +15,13 @@ public class atc01_VueloBajo extends TestBase {
         jsHomePage = new JetSmartHomePage(driver);
         jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
         jsHomePage.cerrarModuloSuscribete();
-        /*jsHomePage.btnInicioSesion();
+        jsHomePage.btnInicioSesion();
 
         InicioSesionPage = new JetSmartInicioSesionPage(driver);
         InicioSesionPage.waitInputLogin();
         InicioSesionPage.iniciarSesion();
 
-         */
+
 
         jsHomePage.formVueloBajo();
 
