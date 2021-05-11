@@ -5,25 +5,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepsModulosHotelesAltoG5 {
-
-    @Given("soy el usuario e ingreso a la pagina {string}")
-    public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
-
-    }
-
+public class StepsModuloHotelG5 {
     @When("Ingreso al formulario hoteles")
     public void Ingreso_al_formulario_hoteles(String string){
 
     }
 
-    @And("Seleciono {string} en el campo de Origen")
-    public void Seleciono_en_el_campo_de_Origen(String string){
-
-    }
 
     @And("Agregar primera fecha disponible")
-    public void Agregar_primera_fecha_disponible(){
+    public void Agregar_primera_fecha_disponible(String string){
 
     }
 
@@ -46,4 +36,26 @@ public class StepsModulosHotelesAltoG5 {
     public void Selecionar_el_checkbox_de_filtros_populares_la_opcion(){
 
     }
+
+    @And("Selecionar el Checkbox de estrellas la opcion {string}")
+    public void Selecionar_el_Checkbox_de_estrellas_la_opcion(String string){
+
+    }
+
+    @Then("Se filtra los resultados y solo se muestran resultados pertenecientes a los 3 filtros aplicados")
+    public void Se_filtra_los_resultados_y_solo_se_muestran_resultados_pertenecientes_a_los_3_filtros_aplicados(){
+
+    }
+
+    @Then("Se muestra al menos un resultado alojamiento en Londres con una habitación")
+    public void Se_muestra_al_menos_un_resultado_londres_una_habitacion(String string){
+
+    }
+
+    @Then("No se encuentra paquetes de alojamiento en Antartica")
+    public void No_se_encuentra_paquetes_de_alojamiento_en_Antartica(){
+
+    }
+
+
 }

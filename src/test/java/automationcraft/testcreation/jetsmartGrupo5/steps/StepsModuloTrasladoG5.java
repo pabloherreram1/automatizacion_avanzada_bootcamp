@@ -5,12 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepsModuloTrasladoAltoG5 {
-
-    @Given("soy el usuario e ingreso a la pagina {string}")
-    public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
-
-    }
+public class StepsModuloTrasladoG5 {
 
     @When("Ingreso al formulario Traslados")
     public void Ingreso_al_formulario_Traslados(){
@@ -22,13 +17,14 @@ public class StepsModuloTrasladoAltoG5 {
 
     }
 
-    @And("selecciono {string} en el campo Origen")
-    public void selecciono_en_el_campo_Origen(String string){
+    @And("Seleciono radio boton ida y vuelta")
+    public void Seleciono_radio_boton_ida_y_vuelta(String string){
 
     }
 
-    @And("selecciono {string} en el campo Destino")
-    public void selecciono_en_el_campo_Destino(String string){
+
+    @And("Selecciono la primera fecha disponible")
+    public void Selecciono_la_primera_fecha_disponible(){
 
     }
 
@@ -37,8 +33,23 @@ public class StepsModuloTrasladoAltoG5 {
 
     }
 
+    @And("Seleciono una fecha de vuelta en 31 dias de la fecha actual")
+    public void Seleciono_fecha_vuelta_en_31_dias_de_la_fecha_actual(String string){
+
+    }
+
+    @And("Selecciono el horario de las 13:00hrs")
+    public void Selecciono_el_horario_de_las_13hrs(){
+
+    }
+
     @And("Seleciono el horario de las 9AM")
     public void Seleciono_el_horario_de_las_9AM(){
+
+    }
+
+    @And("Seleciono el horario de vuelta Actual")
+    public void Selecciono_horario_de_vuelta_Actual(String string){
 
     }
 
@@ -93,7 +104,17 @@ public class StepsModuloTrasladoAltoG5 {
     }
 
     @Then("Se muestra en pantalla los medios de pago disponibles y los datos del transporte")
-  public void Se_muestra_en_pantalla_los_medios_de_pago_disponibles_y_los_datos_del_transporte() {
+    public void Se_muestra_en_pantalla_los_medios_de_pago_disponibles_y_los_datos_del_transporte() {
+
+    }
+
+    @Then("Se muestran las opciones de traslado del aeropueto de España, La Serena.")
+    public void Se_muestran_las_opciones_de_traslado_del_aeropuerto_de_Esp(){
+
+    }
+
+    @Then("Se muestra que no se han encontrado resultados para el traslado")
+    public void Se_muestra_que_no_se_han_encontrado_resultados_para_el_traslado(String string){
 
     }
 

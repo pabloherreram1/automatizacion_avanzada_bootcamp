@@ -20,11 +20,20 @@ public class JetSmartInicioSesionPage extends SeleniumBase{
         waitElementToBePresent(txtCorreo,10);
     }
 
-    public void iniciarSesion(){
+    public void ingresarCorreo(){
         if(isDisplayed(txtCorreo)){
-            //waitElementToBePresent(txtCorreo, 5);
             type("pabloherreram1@hotmail.com", txtCorreo);
+        }
+    }
+
+    public void ingresarPass(){
+        if(isDisplayed(txtPassword)){
             type("pabloprueba123", txtPassword);
+        }
+    }
+
+    public void btnInicio(){
+        if(isDisplayed(btnInicioSesion)){
             click(btnInicioSesion);
         }
     }

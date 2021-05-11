@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepsModuloVueloAltoG5 {
+public class StepsModuloVueloG5 {
     @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
 
@@ -33,6 +33,11 @@ public class StepsModuloVueloAltoG5 {
 
     @And("Seleciona la primera fecha disponible ida")
     public void Seleciona_la_primera_fecha_disponible_ida(String string){
+
+    }
+
+    @And("Seleciono la vuelta dos semanas posterior a la fecha de ida")
+    public void Seleciono_la_vuelta_dos_semanas_posterior_a_la_fecha_de_ida(String string){
 
     }
 
@@ -94,7 +99,17 @@ public class StepsModuloVueloAltoG5 {
     }
 
     @Then("Se muestra en la pantalla de medios de pago, la fecha cambiada de IDA con la nueva fecha de vuelo más barata")
-    public void Se_muestra_en_la_pantalla_de_medios_de_pago_la_fecha_cambiada_de_IDA_con_la_nueva_fecha_de_vuelo_más_barata(){
+    public void Se_muestra_en_la_pantalla_de_medios_de_pago_la_fecha_cambiada_de_IDA_con_la_nueva_fecha_de_vuelo_mas_barata(){
+
+    }
+
+    @Then("Aparece la alerta {string}")
+    public void Aparece_la_alerta(String string){
+
+    }
+
+    @Then("Se muestra los vuelos en las fechas y lugares correspondientes")
+    public void Se_muestra_los_vuelos_en_las_fechas_y_lugares_correspondientes(){
 
     }
 
