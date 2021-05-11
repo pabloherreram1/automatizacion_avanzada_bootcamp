@@ -13,11 +13,11 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
     And Seleciona 2 pasajeros
     And presiono el boton Buscar
     And Click en reservar ahora en el primer resultado
-    And Ingresar nombre del pasajero
-    And Ingresar email del pasajero
-    And Ingresar email de confirmacion del pasajero
+    And Ingresar nombre del pasajero "Raul el perro"
+    And Ingresar email del pasajero "raul@gmail.com"
+    And Ingresar email de confirmacion del pasajero "raul@gmail.com"
     And Ingresar codigo pais "Islas Caiman" del pasajero
-    And Ingresar numero celular del pasajero
-    And Ingresar numero de vuelo del pasajero
+    And Ingresar numero celular del pasajero "88839039"
+    And Ingresar numero de vuelo del pasajero "CD123"
     And presionar boton "ir a Caja"
     Then Se muestra en pantalla los medios de pago disponibles y los datos del transporte.
