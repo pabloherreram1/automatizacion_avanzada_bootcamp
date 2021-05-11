@@ -111,6 +111,9 @@ public class JetSmartHomePage extends SeleniumBase{
     private By btnClassT   = By.xpath("//button[@class='ct-btn ct-btn-p ']");
 
 
+    private By pablo = By.xpath("//span[contains(text(),'pablo Ignacio Herrera Mateluna')]");
+
+
 
     //keyword Driven
     public void cerrarModuloSuscribete(){
@@ -528,10 +531,15 @@ public class JetSmartHomePage extends SeleniumBase{
         //Funciones xD ojito
 
     public void btnInicioSesion(){
-        //waitElementToBePresent(btnIniciar, 5);
+        waitElementToBePresent(btnIniciar, 5);
         if(isDisplayed(btnIniciar)){
             click(btnIniciar);
         }
+    }
+
+
+    public String verificoInicioSesion(){
+        return getText(pablo);
     }
 
 }

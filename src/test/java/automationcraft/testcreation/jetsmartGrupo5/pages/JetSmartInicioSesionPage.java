@@ -16,9 +16,6 @@ public class JetSmartInicioSesionPage extends SeleniumBase{
     private By txtPassword = By.cssSelector("input[name='password']");
     private By btnInicioSesion = By.xpath("//button[contains(text(),'Inicia sesión')]");
 
-    public void waitInputLogin(){
-        waitElementToBePresent(txtCorreo,10);
-    }
 
     public void ingresarCorreo(){
         if(isDisplayed(txtCorreo)){
@@ -37,6 +34,7 @@ public class JetSmartInicioSesionPage extends SeleniumBase{
             click(btnInicioSesion);
         }
     }
+
 }
 
 
