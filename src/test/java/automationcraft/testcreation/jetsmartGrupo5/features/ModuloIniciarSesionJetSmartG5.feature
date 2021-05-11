@@ -4,7 +4,7 @@
     Archivo Gherkin que contiene el modulo iniciar sesion de la pagina JetSmart
     estos escenario esta basado en el punto de vista del usuario final.
 
-  @bootcamp @G5
+  @bootcamp @G5 @Iniciar
     Scenario: El usuario logra iniciar Sesion
     Given El usuario ingresa a "JetSmart"
     When Ingreso al formulario Iniciar Sesion
