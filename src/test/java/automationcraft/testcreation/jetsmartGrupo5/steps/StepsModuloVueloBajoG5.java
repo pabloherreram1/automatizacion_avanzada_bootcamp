@@ -1,6 +1,7 @@
 package automationcraft.testcreation.jetsmartGrupo5.steps;
 
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,12 +18,12 @@ public class StepsModuloVueloBajoG5 {
 
     }
 
-    @When("Seleciono {String} en el campo Origen")
+    @And("Seleciono {String} en el campo Origen")
     public void Seleciono_en_el_campo_Origen(String string){
 
     }
 
-    @When("Seleciono {String} en el campo Destino")
+    @And("Seleciono {String} en el campo Destino")
     public void Seleciono_en_el_campo_Destino(String string){
 
     }

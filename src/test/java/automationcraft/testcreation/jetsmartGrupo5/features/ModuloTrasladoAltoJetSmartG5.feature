@@ -9,7 +9,7 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
     And selecciono "Ezeiza" en el campo Origen
     And selecciono "Newbery" en el campo Destino
     And Seleciono una fecha de ida en 30 dias
-    And Seleciono el horario de las 09:00 AM
+    And Seleciono el horario de las 9AM
     And Seleciona 2 pasajeros
     And presiono el boton Buscar
     And Click en reservar ahora en el primer resultado

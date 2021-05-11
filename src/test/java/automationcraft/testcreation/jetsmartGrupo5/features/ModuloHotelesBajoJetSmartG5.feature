@@ -8,4 +8,4 @@
       When Ingreso al formulario Hoteles
       And selecciono "Antartica" en el campo Origen
       And presiono el boton Buscar
-      Then No se encuentra paquetes de alojamineto en Antartica
+      Then No se encuentra paquetes de alojamiento en Antartica

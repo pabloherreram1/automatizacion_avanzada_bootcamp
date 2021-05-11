@@ -18,7 +18,6 @@
     And Seleciono el boton "Vuelo Mas barato"
     And Selecion la segunda fecha de vuelo disponible del proximo mes
     And Presiono el boton continuar
-    And cierro la ventana club descuento
     And Seleciono el Pack de vuelo mas barato
     And fijo precio por 24hrs
     And Clickear en Continuar
