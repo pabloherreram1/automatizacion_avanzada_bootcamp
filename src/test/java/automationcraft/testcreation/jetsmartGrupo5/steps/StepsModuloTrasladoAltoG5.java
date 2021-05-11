@@ -5,9 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepsModuloTrasladoAlto {
+public class StepsModuloTrasladoAltoG5 {
 
-    @Given("soy el usuario e ingreso a la pagina {String}")
+    @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
 
     }
@@ -17,17 +17,17 @@ public class StepsModuloTrasladoAlto {
 
     }
 
-    @And("Seleciono radio boton {String}")
+    @And("Seleciono radio boton {string}")
     public void Seleciono_radio_boton(String string){
 
     }
 
-    @And("selecciono {String} en el campo Origen")
+    @And("selecciono {string} en el campo Origen")
     public void selecciono_en_el_campo_Origen(String string){
 
     }
 
-    @And("selecciono {String} en el campo Destino")
+    @And("selecciono {string} en el campo Destino")
     public void selecciono_en_el_campo_Destino(String string){
 
     }
@@ -57,37 +57,37 @@ public class StepsModuloTrasladoAlto {
 
     }
 
-    @And("Ingresar nombre del pasajero {String}")
+    @And("Ingresar nombre del pasajero {string}")
     public void Ingresar_nombre_del_pasajero(String string){
 
     }
 
-    @And("Ingresar email del pasajero {String}")
+    @And("Ingresar email del pasajero {string}")
     public void Ingresar_email_del_pasajero(String string){
 
     }
 
-    @And("Ingresar email de confirmacion del pasajero {String}")
+    @And("Ingresar email de confirmacion del pasajero {string}")
     public void Ingresar_email_de_confirmacion_del_pasajero(String string){
 
     }
 
-    @And("Ingresar codigo pais {String} del pasajero")
+    @And("Ingresar codigo pais {string} del pasajero")
     public void Ingresar_codigo_pais_del_pasajero(String string){
 
     }
 
-    @And("Ingresar numero celular del pasajero {String}")
+    @And("Ingresar numero celular del pasajero {string}")
     public void Ingresar_numero_celular_del_pasajero(String string){
 
     }
 
-    @And("Ingresar numero de vuelo del pasajero {String}")
+    @And("Ingresar numero de vuelo del pasajero {string}")
     public void Ingresar_numero_de_vuelo_del_pasajero(){
 
     }
 
-    @And("presionar boton {String}")
+    @And("presionar boton {string}")
     public void presionar_boton(String string){
 
     }

@@ -8,7 +8,7 @@ import io.cucumber.java.en.When;
 
 public class StepsModuloVueloBajoG5 {
 
-    @Given("que soy un usuario e ingreso a la web {String}")
+    @Given("que soy un usuario e ingreso a la web {string}")
     public void que_soy_un_usuario_e_ingreso_a_la_web(String string){
         throw new io.cucumber.java.PendingException();
     }
@@ -18,17 +18,17 @@ public class StepsModuloVueloBajoG5 {
 
     }
 
-    @And("Seleciono {String} en el campo Origen")
+    @And("Seleciono {string} en el campo Origen")
     public void Seleciono_en_el_campo_Origen(String string){
 
     }
 
-    @And("Seleciono {String} en el campo Destino")
+    @And("Seleciono {string} en el campo Destino")
     public void Seleciono_en_el_campo_Destino(String string){
 
     }
 
-    @Then("Aparece la alerta {String}")
+    @Then("Aparece la alerta {string}")
     public void Aparece_la_alerta(String string){
 
     }

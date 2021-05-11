@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepsModuloVueloAltoG5 {
-    @Given("soy el usuario e ingreso a la pagina {String}")
+    @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
 
     }
@@ -16,12 +16,12 @@ public class StepsModuloVueloAltoG5 {
 
     }
 
-    @And("selecciono {String} en el campo Origen")
+    @And("selecciono {string} en el campo Origen")
     public void selecciono_en_el_campo_Origen(String string){
 
     }
 
-    @And("selecciono {String} en el campo Destino")
+    @And("selecciono {string} en el campo Destino")
     public void selecciono_en_el_campo_Destino(String string){
 
     }
@@ -56,7 +56,7 @@ public class StepsModuloVueloAltoG5 {
 
     }
 
-    @And("Seleciono el boton {String}")
+    @And("Seleciono el boton {string}")
     public void Seleciono_el_boton(String string){
 
     }

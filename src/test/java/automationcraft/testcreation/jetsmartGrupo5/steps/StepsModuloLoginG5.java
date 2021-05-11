@@ -15,7 +15,7 @@ public class StepsModuloLoginG5 {
     private JetSmartInicioSesionPage inicioSesionPageG5 = new JetSmartInicioSesionPage(DriverFactory.getDriver());
     private String titulo;
 
-    @Given("El usuario ingresa a {String}")
+    @Given("El usuario ingresa a {string}")
     public void El_usuario_ingresa(){
         homePageG5.goToUrl("https://jetsmart.com/cl/es/");
         homePageG5.cerrarModuloSuscribete();
@@ -27,15 +27,16 @@ public class StepsModuloLoginG5 {
     public void Ingreso_al_formulario_Iniciar_Sesion(){
 
     }
-    @And("Seleciono {String} en el campo Origen")
+    @And("Seleciono {string} en el campo Origen")
     public void Seleciono_en_el_campo_Origen(String string){
 
     }
-    @And("Seleciono {String} en el campo Destino")
+    @And("Seleciono {string} en el campo Destino")
     public void Seleciono_en_el_campo_Destino(String string){
         inicioSesionPageG5.iniciarSesion();
     }
-    @Then("Aparece la alerta {String}")
+
+    @Then("Aparece la alerta {string}")
     public void Aparece_la_alerta(String string){
         //Assert.assertEquals("No hay resultados", );
 

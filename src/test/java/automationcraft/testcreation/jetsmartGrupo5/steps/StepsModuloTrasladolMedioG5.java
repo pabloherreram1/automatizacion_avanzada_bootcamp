@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepModuloTrasladolMedioG5 {
+public class StepsModuloTrasladolMedioG5 {
     @Given("soy el usuario e ingreso a la pagina Jetsmart ")
     public void soy_el_usuario_e_ingreso_a_la_web(String string){
         throw new io.cucumber.java.PendingException();
@@ -19,11 +19,11 @@ public class StepModuloTrasladolMedioG5 {
     public void Seleciono_radio_boton_ida_y_vuelta(String string){
 
     }
-    @And("Seleciono {String} en el campo Origen")
+    @And("Seleciono {string} en el campo Origen")
     public void Seleciono_en_el_campo_Origen(String string){
 
     }
-    @When("Seleciono {String} en el campo Destino")
+    @When("Seleciono {string} en el campo Destino")
     public void Seleciono_en_el_campo_Destino(String string){
 
     }

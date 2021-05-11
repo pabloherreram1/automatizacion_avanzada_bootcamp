@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
 
-public class StepsTrasladoBajo {
+public class StepsModuloTrasladoBajoG5 {
 
-    @Given("soy el usuario e ingreso a la pagina {String}")
+    @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string) {
 
     }
@@ -19,12 +19,12 @@ public class StepsTrasladoBajo {
 
     }
 
-    @And("Selecciono radio boton {String}")
+    @And("Selecciono radio boton {string}")
     public void Selecciono_radio_buton(String string){
 
     }
 
-    @And("selecciono {String} en el campo Origen")
+    @And("selecciono {string} en el campo Origen")
     public void selecciono_en_el_campo_Origen(String string){
 
     }

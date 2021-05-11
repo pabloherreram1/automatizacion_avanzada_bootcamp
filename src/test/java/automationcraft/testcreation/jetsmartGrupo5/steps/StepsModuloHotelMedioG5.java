@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepModuloHotelMedioG5 {
+public class StepsModuloHotelMedioG5 {
 
     @Given("soy el usuario e ingreso a la pagina Jetsmart ")
     public void soy_el_usuario_e_ingreso_a_la_web(String string){
@@ -17,7 +17,7 @@ public class StepModuloHotelMedioG5 {
 
     }
 
-    @And("Seleciono {String} en el campo Origen")
+    @And("Seleciono {string} en el campo Origen")
     public void Seleciono_en_el_campo_Origen(String string){
 
     }

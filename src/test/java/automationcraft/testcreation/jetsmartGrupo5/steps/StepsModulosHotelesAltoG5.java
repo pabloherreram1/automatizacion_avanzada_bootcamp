@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 
 public class StepsModulosHotelesAltoG5 {
 
-    @Given("soy el usuario e ingreso a la pagina {String}")
+    @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
 
     }
@@ -17,7 +17,7 @@ public class StepsModulosHotelesAltoG5 {
 
     }
 
-    @And("Seleciono {String} en el campo de Origen")
+    @And("Seleciono {string} en el campo de Origen")
     public void Seleciono_en_el_campo_de_Origen(String string){
 
     }
@@ -42,7 +42,7 @@ public class StepsModulosHotelesAltoG5 {
 
     }
 
-    @And("Selecionar el checkbox de filtros populares la opcion {String}")
+    @And("Selecionar el checkbox de filtros populares la opcion {string}")
     public void Selecionar_el_checkbox_de_filtros_populares_la_opcion(){
 
     }
