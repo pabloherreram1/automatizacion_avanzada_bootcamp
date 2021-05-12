@@ -12,6 +12,7 @@ import io.cucumber.java.en_scouse.An;
 public class StepsModuloHotelG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
     private JetSmartSinPaqueteHotelesBajo SinPaqueteHotelesBajo = new JetSmartSinPaqueteHotelesBajo(DriverFactory.getDriver());
+
     @Given("soy el usuario e ingreso a la pagina {string} hotel")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
         homePageG5.goToUrl("https://jetsmart.com/cl/es/");

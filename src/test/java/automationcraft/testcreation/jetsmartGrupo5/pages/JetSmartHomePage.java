@@ -449,33 +449,73 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void formTrasladoBajo() throws ParseException, InterruptedException {
+    //__________Traslado Bajo_______________________________
+    public void ingresarFormTraslado(){
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
             cambiarAiframe(IframeTraslado);
+        }
+    }
+    public void selectRadiobtn(){
+        if(isDisplayed(radiobtnIda)){
             click(radiobtnIda);
+        }
+    }
+
+    public void ingresarOrigenTraslado(){
+        if(isDisplayed(txtAeropuertoOrigen)){
             type("Santiago Chile", txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
+        }
+    }
+
+    public void ingresarDestinoTraslado(){
+        if(isDisplayed(txtAeropuertoDestino)){
             type("La Serena Chile", txtAeropuertoDestino);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
+        }
+    }
+
+    public void firstFechadisponible()throws ParseException, InterruptedException{
+        if(isDisplayed(containerCalendar)){
             waitElementToBeClickable(containerCalendar, 5);
             elegirPrimerDiaDisponibleT();
+        }
+    }
+
+    public void horarioTrasladoBajo(){
+        if(isDisplayed(btnHorario1pm)){
             waitElementToBeClickable(btnHorario1pm, 5);//13pm
             click(btnHorario1pm);
+        }
+    }
+
+    public void seleccionUnPasajeroTrasladoBajo(){
+        if(isDisplayed(cantidadPasajeros1)){
             waitElementToBeClickable(cantidadPasajeros1, 5);
             click(cantidadPasajeros1);
+        }
+    }
+
+    public void btnTrasladoBajo(){
+        if(isDisplayed(btnBuscarTraslado)){
             click(btnBuscarTraslado);
             salirDelIframe();
             cambiarDeTab(1);
+        }
+    }
+
+    public void alertaTrasladoBajo(){
+        if(isDisplayed(btnClassT)){
             waitElementToBeClickable(btnClassT,10);
             int size = findElements(resultadoTraslado).size();
             System.out.println("el sSIZE ES ESTEEEEEEEEEE: "+ size);
             Assert.assertEquals(11,size);
         }
     }
-
+    //---------------------------------------------------------------
     public void elegirPrimerDiaDisponibleT() throws ParseException {
         String actualDate = obtenerDia(); //Hoy retorna "2021-05-04"
         String fechaActual[] = actualDate.split("-");
