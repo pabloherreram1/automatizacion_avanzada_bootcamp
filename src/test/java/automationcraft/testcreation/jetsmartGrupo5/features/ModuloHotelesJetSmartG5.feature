@@ -10,7 +10,7 @@
       And selecciono "Londres" en el campo Origen hotel
       And Agregar primera fecha disponible
       And Agregar fecha final de alojamiento de dos semanas posterior
-      And presionar Buscar
+      And presionar Buscar hotel
       And Selecionar el primer resultado del Checkbox en la categoria presupuesto
       And Selecionar el checkbox de filtros populares la opcion "Hoteles"
       And Selecionar el Checkbox de estrellas la opcion "3 Estrellas"
@@ -24,8 +24,8 @@
       And selecciono "Londres" en el campo Origen hotel
       And Agregar primera fecha disponible
       And Agregar fecha final de alojamiento de dos semanas posterior
-      And presionar Buscar
-      Then Se muestra al menos un resultado alojamiento en Londres con una habitación
+      And presionar Buscar hotel
+      #Then Se muestra al menos un resultado alojamiento en Londres con una habitación
 
 
     @bootcamp @G5 @HotelBajo

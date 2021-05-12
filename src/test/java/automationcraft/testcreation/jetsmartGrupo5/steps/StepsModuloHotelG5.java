@@ -9,6 +9,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
 
+import java.text.ParseException;
+
 public class StepsModuloHotelG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
     private JetSmartSinPaqueteHotelesBajo SinPaqueteHotelesBajo = new JetSmartSinPaqueteHotelesBajo(DriverFactory.getDriver());
@@ -26,27 +28,27 @@ public class StepsModuloHotelG5 {
 
     @And("selecciono {string} en el campo Origen hotel bajo")
     public void selecciono_en_el_campo_Origen_hotel_bajo(String string){
-        homePageG5.ingresoOrigenHotel();
+        homePageG5.ingresoOrigenHotelBajo();
     }
 
     @And("selecciono {string} en el campo Origen hotel")
     public void selecciono_en_el_campo_Origen_hotel(String string){
-
+        homePageG5.ingresoOrigenHotel(string);
     }
 
     @And("Agregar primera fecha disponible")
-    public void Agregar_primera_fecha_disponible(){
-
+    public void Agregar_primera_fecha_disponible() throws ParseException {
+        homePageG5.primeraFechaDisponibleHotel();
     }
 
     @And("Agregar fecha final de alojamiento de dos semanas posterior")
-    public void Agregar_fecha_final_de_alojamiento_de_dos_semanas_posterior(){
-
+    public void Agregar_fecha_final_de_alojamiento_de_dos_semanas_posterior() throws ParseException {
+        homePageG5.segundaFechaDisponibleHotel();
     }
 
     @And("presionar Buscar hotel")
     public void presionar_Buscar_hotel(){
-        homePageG5.btnBuscarHotelbajo();
+        homePageG5.btnBuscarHotel();
     }
 
     @And("Selecionar el primer resultado del Checkbox en la categoria presupuesto")

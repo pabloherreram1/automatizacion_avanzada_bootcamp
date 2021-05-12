@@ -303,24 +303,30 @@ public class JetSmartHomePage extends SeleniumBase{
 
     }
 
-    //----------Hotel Medio------------------------------
-
-    public void formHotelesMedio() throws ParseException {
-        if(isDisplayed(btnHoteles)){
-            click(btnHoteles);
-            cambiarAiframe(IframeHotel);
+    //____________Hotel Medio____________
+    public void ingresoOrigenHotel(String string){
+        if(isDisplayed(txtDestinoHotel)){
+            click(txtDestinoHotel);
             clearTxtFromInput(txtDestinoHotel);
-            type("Londres", txtDestinoHotel);
+            type(string, txtDestinoHotel);
+        }
+    }
+
+    public void primeraFechaDisponibleHotel() throws ParseException {
+        if(isDisplayed(calendarIdaHotel)){
             click(calendarIdaHotel);
             elegirPrimerDiaDisponible(calendarIdaHotel,nombreDelMes,calendarioHotel,diaDelMes);
+        }
+    }
+
+    public void segundaFechaDisponibleHotel() throws ParseException {
+        if(isDisplayed(calendarVueltaHotel)){
             click(calendarVueltaHotel);
             //proceso calendar VUELTA 2 semanas
             elegirCheckOutEn2Semanas();
-            click(btnBuscarHotel);
-
-            //Encontrar paquetes Disponibles
         }
     }
+
 
     //----------Hotel Bajo------------------------------
 
@@ -331,7 +337,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void ingresoOrigenHotel(){
+    public void ingresoOrigenHotelBajo(){
         if(isDisplayed(txtDestinoHotel)){
             click(txtDestinoHotel);
             clearTxtFromInput(txtDestinoHotel);
@@ -339,7 +345,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void btnBuscarHotelbajo(){
+    public void btnBuscarHotel(){
         if(isDisplayed(btnBuscarHotel)){
             click(btnBuscarHotel);
             salirDelIframe();
