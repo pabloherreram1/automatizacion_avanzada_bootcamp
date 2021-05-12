@@ -33,5 +33,5 @@
       Given soy el usuario e ingreso a la pagina "JetSmart" hotel
       When Ingreso al formulario hoteles
       And selecciono "Antartica" en el campo Origen hotel bajo
-      And presiono el boton Buscar
+      And presionar Buscar hotel
       Then No se encuentra paquetes de alojamiento en Antartica

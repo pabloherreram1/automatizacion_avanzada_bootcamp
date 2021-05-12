@@ -43,8 +43,8 @@ public class StepsModuloHotelG5 {
 
     }
 
-    @And("presionar Buscar")
-    public void presionar_Buscar(){
+    @And("presionar Buscar hotel")
+    public void presionar_Buscar_hotel(){
         homePageG5.btnBuscarHotelbajo();
     }
 

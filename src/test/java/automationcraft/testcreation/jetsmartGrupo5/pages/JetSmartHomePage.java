@@ -282,6 +282,9 @@ public class JetSmartHomePage extends SeleniumBase{
 
 
     }
+
+    //----------Hotel Medio------------------------------
+
     public void formHotelesMedio() throws ParseException {
         if(isDisplayed(btnHoteles)){
             click(btnHoteles);
