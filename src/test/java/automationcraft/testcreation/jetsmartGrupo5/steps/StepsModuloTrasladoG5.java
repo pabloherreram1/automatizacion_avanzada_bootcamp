@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.ElementClickInterceptedException;
 
 import java.text.ParseException;
 
@@ -27,7 +28,10 @@ public class StepsModuloTrasladoG5 {
     public void Seleciono_radio_boton(String string){
         homePageG5.selectRadiobtn();
     }
-
+    @And("Seleciono radio boton Ida y vuelta")
+    public void Seleciono_radio_boton(){
+        homePageG5.selectRadiobtnIdaYvuelta();
+    }
     @And("selecciono {string} en el campo Origen traslado")
     public void selecciono_en_el_campo_Origen_traslado(String string){
         homePageG5.ingresarOrigenTraslado();
@@ -39,7 +43,7 @@ public class StepsModuloTrasladoG5 {
     }
 
     @And("Seleciono radio boton ida y vuelta")
-    public void Seleciono_radio_boton_ida_y_vuelta(String string){
+    public void Seleciono_radio_boton_ida_y_vuelta(){
 
     }
 
@@ -50,13 +54,13 @@ public class StepsModuloTrasladoG5 {
     }
 
     @And("Seleciono una fecha de ida en 30 dias")
-    public void Seleciono_una_fecha_de_ida_en_30_dias(){
-
+    public void Seleciono_una_fecha_de_ida_en_30_dias() throws ParseException {
+        homePageG5.seleccionoFechaIda30();
     }
 
     @And("Seleciono una fecha de vuelta en 31 dias de la fecha actual")
-    public void Seleciono_fecha_vuelta_en_31_dias_de_la_fecha_actual(String string){
-
+    public void Seleciono_fecha_vuelta_en_31_dias_de_la_fecha_actual() throws ParseException {
+        homePageG5.Fecha_1_dia_despues_de_la_fecha_ida();
     }
 
     @And("Selecciono el horario de las 13:00hrs")
@@ -66,13 +70,9 @@ public class StepsModuloTrasladoG5 {
 
     @And("Seleciono el horario de las 9AM")
     public void Seleciono_el_horario_de_las_9AM(){
-
+        homePageG5.horario9am();
     }
 
-    @And("Seleciono el horario de vuelta Actual")
-    public void Selecciono_horario_de_vuelta_Actual(String string){
-
-    }
 
     @And("Selecciono un pasajero")
     public void Selecciono_un_pasajero(){
@@ -86,7 +86,11 @@ public class StepsModuloTrasladoG5 {
 
     @And("presiono el boton Buscar traslado")
     public void presiono_el_boton_Buscar_traslado(){
-        homePageG5.btnTrasladoBajo();
+        try {
+            homePageG5.btnTrasladoBajo();
+        }catch (ElementClickInterceptedException e) {
+            homePageG5.btnTrasladoMedio();
+        }
     }
 
     @And("Click en reservar ahora en el primer resultado")
@@ -120,7 +124,7 @@ public class StepsModuloTrasladoG5 {
     }
 
     @And("Ingresar numero de vuelo del pasajero {string}")
-    public void Ingresar_numero_de_vuelo_del_pasajero(){
+    public void Ingresar_numero_de_vuelo_del_pasajero(String string){
 
     }
 

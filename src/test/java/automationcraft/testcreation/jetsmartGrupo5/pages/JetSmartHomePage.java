@@ -328,6 +328,8 @@ public class JetSmartHomePage extends SeleniumBase{
     }
 
 
+
+
     //----------Hotel Bajo------------------------------
 
     public void ingresoFormHotel(){
@@ -442,38 +444,50 @@ public class JetSmartHomePage extends SeleniumBase{
             cambiarDeTab(1);
         }
     }
-    public void formTrasladoMedio() throws ParseException, InterruptedException {
-        if(isDisplayed(btnTraslado)){
-            click(btnTraslado);
-            cambiarAiframe(IframeTraslado);
+
+
+
+    //______________Traslado Medio_____________________
+
+    public void selectRadiobtnIdaYvuelta(){
+        if(isDisplayed(radiobtnIdaVuelta)){
             click(radiobtnIdaVuelta);
-            type("Ezeiza", txtAeropuertoOrigen);
-            waitElementToBeClickable(primerElementoLT, 5);
-            click(primerElementoLT);
-            type("Bogota Colombia", txtAeropuertoDestino);
-            waitElementToBeClickable(primerElementoLT, 5);
-            click(primerElementoLT);
+        }
+    }
+
+    public void seleccionoFechaIda30() throws ParseException {
+        if(isDisplayed(containerCalendar)){
             //Fecha 30 desp del actual
             waitElementToBeClickable(containerCalendar, 5);
             elegirFechaDespDe(30);
+        }
+    }
+
+    public void horario9am(){
+        if(isDisplayed(btnHorario9am)){
             //Selecionar 9am
             waitElementToBeClickable(btnHorario9am,5);
             click(btnHorario9am);
-            //Fecha 1 dia despues de la fecha ida
-            waitElementToBeClickable(containerCalendar,5);
-            elegirFechaDespDe(31);
-
-            //Selecionar 1 pasajeros
-            click(listPasajeroTraslado);
-            waitElementToBeClickable(cantidadPasajeros1, 5);
-            click(cantidadPasajeros1);
-            WebElement ele = driver.findElement(By.cssSelector("button.ct-btn.ct-btn-p.gt-is-valid"));
-            JavascriptExecutor jse = (JavascriptExecutor)driver;
-            jse.executeScript("arguments[0].click()", ele);
-            salirDelIframe();
-            cambiarDeTab(1);
         }
     }
+
+    public void Fecha_1_dia_despues_de_la_fecha_ida() throws ParseException {
+        if(isDisplayed(containerCalendar)){
+            waitElementToBeClickable(containerCalendar,5);
+            elegirFechaDespDe(31);
+        }
+
+    }
+
+    public void btnTrasladoMedio(){
+        WebElement ele = driver.findElement(By.cssSelector("button.ct-btn.ct-btn-p.gt-is-valid"));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+        salirDelIframe();
+        cambiarDeTab(1);
+    }
+
+
 
     //__________Traslado Bajo_______________________________
     public void ingresarFormTraslado(){
@@ -519,6 +533,7 @@ public class JetSmartHomePage extends SeleniumBase{
     }
 
     public void seleccionUnPasajeroTrasladoBajo(){
+        click(listPasajeroTraslado);
         if(isDisplayed(cantidadPasajeros1)){
             waitElementToBeClickable(cantidadPasajeros1, 5);
             click(cantidadPasajeros1);
