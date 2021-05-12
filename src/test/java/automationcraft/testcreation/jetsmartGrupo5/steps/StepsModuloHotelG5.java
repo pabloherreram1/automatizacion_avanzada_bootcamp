@@ -2,6 +2,7 @@ package automationcraft.testcreation.jetsmartGrupo5.steps;
 
 import automationcraft.engine.selenium.DriverFactory;
 import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartHomePage;
+import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartPaquetesLondresHoteles;
 import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartSinPaqueteHotelesBajo;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,7 +15,7 @@ import java.text.ParseException;
 public class StepsModuloHotelG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
     private JetSmartSinPaqueteHotelesBajo SinPaqueteHotelesBajo = new JetSmartSinPaqueteHotelesBajo(DriverFactory.getDriver());
-
+    private JetSmartPaquetesLondresHoteles LondresHoteles = new JetSmartPaquetesLondresHoteles(DriverFactory.getDriver());
     @Given("soy el usuario e ingreso a la pagina {string} hotel")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
         homePageG5.goToUrl("https://jetsmart.com/cl/es/");
@@ -72,8 +73,8 @@ public class StepsModuloHotelG5 {
     }
 
     @Then("Se muestra al menos un resultado alojamiento en Londres con una habitación")
-    public void Se_muestra_al_menos_un_resultado_londres_una_habitacion(String string){
-
+    public void Se_muestra_al_menos_un_resultado_londres_una_habitacion(){
+        LondresHoteles.verificarQueHayAlMenos1Resultado();
     }
 
     @Then("No se encuentra paquetes de alojamiento en Antartica")

@@ -1,9 +1,8 @@
 package automationcraft.testcreation.jetsmartGrupo5.pages;
 
 import bctsoft.grupo5.pageobject.base.SeleniumBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.Assert;
+import org.openqa.selenium.*;
 
 public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     public JetSmartPaquetesLondresHoteles(WebDriver driver) {
@@ -16,7 +15,7 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     private By btnFiltroPresupuesto = By.cssSelector("span:not(.bui-switch__indicator)");
     private By bodyNoHover= By.cssSelector("body.no-hover");
     private By overlayFiltros = By.cssSelector("div.sr-usp-overlay.sr-usp-overlay--wide");
-
+    private By resultados = By.cssSelector("div.sr_item");
 
     String filtroPresupuesto = "";
     String filtroPop = "";
@@ -75,6 +74,12 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
                 filtroStars = filtro.getText();
             }
         }
+    }
+
+    public void verificarQueHayAlMenos1Resultado(){
+        waitNumberOfElementsToBeMoreThan(resultados,0);
+        int cantResultados = findElements(resultados).size();
+        Assert.assertTrue(cantResultados>0);
     }
 }
 

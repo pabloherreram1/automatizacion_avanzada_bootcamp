@@ -25,7 +25,7 @@
       And Agregar primera fecha disponible
       And Agregar fecha final de alojamiento de dos semanas posterior
       And presionar Buscar hotel
-      #Then Se muestra al menos un resultado alojamiento en Londres con una habitación
+      Then Se muestra al menos un resultado alojamiento en Londres con una habitación
 
 
     @bootcamp @G5 @HotelBajo
