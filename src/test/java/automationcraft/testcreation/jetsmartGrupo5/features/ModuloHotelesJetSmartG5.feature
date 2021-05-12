@@ -5,9 +5,9 @@
 
     @bootcamp @G5 @HotelAlto
       Scenario: El usuario aplica filtros para realizar una busqueda mas personalizada
-      Given soy el usuario e ingreso a la pagina "JetSmart"
+      Given soy el usuario e ingreso a la pagina "JetSmart" hotel
       When Ingreso al formulario hoteles
-      And Seleciono "Londres" en el campo de Origen
+      And selecciono "Londres" en el campo Origen hotel
       And Agregar primera fecha disponible
       And Agregar fecha final de alojamiento de dos semanas posterior
       And presionar Buscar
@@ -17,21 +17,21 @@
       Then Se filtra los resultados y solo se muestran resultados pertenecientes a los 3 filtros aplicados
 
 
-    @bootcamp @G5 @HotelBajo
-    Scenario: El usuario No encuentra paquete de alojamiento
-      Given soy el usuario e ingreso a la pagina "JetSmart"
-      When Ingreso al formulario hoteles
-      And selecciono "Antartica" en el campo Origen
-      And presiono el boton Buscar
-      Then No se encuentra paquetes de alojamiento en Antartica
-
-
     @bootcamp @G5 @HotelMedio
     Scenario: El usuario busca y encuentra un paquete de alojamiento
-      Given soy el usuario e ingreso a la pagina "JetSmart"
+      Given soy el usuario e ingreso a la pagina "JetSmart" hotel
       When Ingreso al formulario hoteles
-      And Seleciono "Londres" en el campo de Origen
+      And selecciono "Londres" en el campo Origen hotel
       And Agregar primera fecha disponible
       And Agregar fecha final de alojamiento de dos semanas posterior
       And presionar Buscar
       Then Se muestra al menos un resultado alojamiento en Londres con una habitación
+
+
+    @bootcamp @G5 @HotelBajo
+    Scenario: El usuario No encuentra paquete de alojamiento
+      Given soy el usuario e ingreso a la pagina "JetSmart" hotel
+      When Ingreso al formulario hoteles
+      And selecciono "Antartica" en el campo Origen hotel bajo
+      And presiono el boton Buscar
+      Then No se encuentra paquetes de alojamiento en Antartica

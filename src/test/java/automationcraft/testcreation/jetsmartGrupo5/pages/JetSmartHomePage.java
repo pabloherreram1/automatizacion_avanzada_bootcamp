@@ -298,19 +298,35 @@ public class JetSmartHomePage extends SeleniumBase{
             //Encontrar paquetes Disponibles
         }
     }
-    public void formHotelesBajo(){
+
+    //----------Hotel Bajo------------------------------
+
+    public void ingresoFormHotel(){
         if(isDisplayed(btnHoteles)){
             click(btnHoteles);
             cambiarAiframe(IframeHotel);
+        }
+    }
+
+    public void ingresoOrigenHotel(){
+        if(isDisplayed(txtDestinoHotel)){
             click(txtDestinoHotel);
             clearTxtFromInput(txtDestinoHotel);
             type("Antartica", txtDestinoHotel);
+        }
+    }
+
+    public void btnBuscarHotelbajo(){
+        if(isDisplayed(btnBuscarHotel)){
             click(btnBuscarHotel);
             salirDelIframe();
             cambiarDeTab(1);
-            Assert.assertEquals("Hay 0 alojamientos disponibles en este destino y alrededores",getText(dato));
+
         }
     }
+
+
+    //--------------------------------------------------------------------------
 
     public void elegirPrimerDiaDisponible(By selectorDeIda, By nombreDelMes,By calendarioDelIfreme,By diasDelMes) throws ParseException {
         //Array de meses para comparar.
