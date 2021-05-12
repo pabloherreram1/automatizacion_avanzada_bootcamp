@@ -7,8 +7,8 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
     Given soy el usuario e ingreso a la pagina "JetSmart"
     When Ingreso al formulario Traslados
     And Seleciono radio boton "Ida"
-    And selecciono "Ezeiza" en el campo Origen
-    And selecciono "Newbery" en el campo Destino
+    And selecciono "Ezeiza" en el campo Origen traslado
+    And selecciono "Newbery" en el campo Destino traslado
     And Seleciono una fecha de ida en 30 dias
     And Seleciono el horario de las 9AM
     And Seleciona 2 pasajeros
@@ -29,14 +29,14 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
     Given soy el usuario e ingreso a la pagina "JetSmart"
     When Ingreso al formulario Traslados
     And Seleciono radio boton Ida y vuelta
-    And selecciono "Ezeiza" en el campo Origen
-    And selecciono "Bogota Colombia" en el campo Destino
+    And selecciono "Ezeiza" en el campo Origen traslado
+    And selecciono "Bogota Colombia" en el campo Destino traslado
     And Seleciono una fecha de ida en 30 dias
     And Seleciono el horario de las 9AM
     And Seleciono una fecha de vuelta en 31 dias de la fecha actual
     And Selecciono un pasajero
     And presiono el boton Buscar traslado
-    #Then Se muestra que no se han encontrado resultados para el traslado
+    Then Se muestra que no se han encontrado resultados para el traslado
 
 
   @bootcamp @G5 @TrasladoBajo

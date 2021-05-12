@@ -2,6 +2,7 @@ package automationcraft.testcreation.jetsmartGrupo5.steps;
 
 import automationcraft.engine.selenium.DriverFactory;
 import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartHomePage;
+import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartResultado2Traslado;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +13,7 @@ import java.text.ParseException;
 
 public class StepsModuloTrasladoG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
-
+    private JetSmartResultado2Traslado Resultado2Traslado = new JetSmartResultado2Traslado(DriverFactory.getDriver());
     @Given("soy el usuario e ingreso a la pagina {string} traslado")
     public void soy_el_usuario_e_ingreso_a_la_pagina_traslado(String string){
         homePageG5.goToUrl("https://jetsmart.com/cl/es/");
@@ -34,12 +35,12 @@ public class StepsModuloTrasladoG5 {
     }
     @And("selecciono {string} en el campo Origen traslado")
     public void selecciono_en_el_campo_Origen_traslado(String string){
-        homePageG5.ingresarOrigenTraslado();
+        homePageG5.ingresarOrigenTraslado(string);
     }
 
     @And("selecciono {string} en el campo Destino traslado")
     public void selecciono_en_el_campo_Destino_traslado(String string){
-        homePageG5.ingresarDestinoTraslado();
+        homePageG5.ingresarDestinoTraslado(string);
     }
 
     @And("Seleciono radio boton ida y vuelta")
@@ -54,12 +55,12 @@ public class StepsModuloTrasladoG5 {
     }
 
     @And("Seleciono una fecha de ida en 30 dias")
-    public void Seleciono_una_fecha_de_ida_en_30_dias() throws ParseException {
+    public void Seleciono_una_fecha_de_ida_en_30_dias() throws ParseException, InterruptedException {
         homePageG5.seleccionoFechaIda30();
     }
 
     @And("Seleciono una fecha de vuelta en 31 dias de la fecha actual")
-    public void Seleciono_fecha_vuelta_en_31_dias_de_la_fecha_actual() throws ParseException {
+    public void Seleciono_fecha_vuelta_en_31_dias_de_la_fecha_actual() throws ParseException, InterruptedException {
         homePageG5.Fecha_1_dia_despues_de_la_fecha_ida();
     }
 
@@ -141,8 +142,8 @@ public class StepsModuloTrasladoG5 {
     }
 
     @Then("Se muestra que no se han encontrado resultados para el traslado")
-    public void Se_muestra_que_no_se_han_encontrado_resultados_para_el_traslado(String string){
-
+    public void Se_muestra_que_no_se_han_encontrado_resultados_para_el_traslado(){
+        Resultado2Traslado.verificarQueNoHayTrasladosDisp();
     }
 
 }

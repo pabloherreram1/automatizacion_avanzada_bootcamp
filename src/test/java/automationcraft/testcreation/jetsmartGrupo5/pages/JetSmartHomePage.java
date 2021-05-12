@@ -422,7 +422,7 @@ public class JetSmartHomePage extends SeleniumBase{
 
     //Traslado(Transporte)
 
-    public void formTrasladoAlto() throws ParseException {
+    public void formTrasladoAlto() throws ParseException, InterruptedException {
         if(isDisplayed(btnTraslado)){
             click(btnTraslado);
             cambiarAiframe(IframeTraslado);
@@ -455,7 +455,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void seleccionoFechaIda30() throws ParseException {
+    public void seleccionoFechaIda30() throws ParseException, InterruptedException {
         if(isDisplayed(containerCalendar)){
             //Fecha 30 desp del actual
             waitElementToBeClickable(containerCalendar, 5);
@@ -471,7 +471,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void Fecha_1_dia_despues_de_la_fecha_ida() throws ParseException {
+    public void Fecha_1_dia_despues_de_la_fecha_ida() throws ParseException, InterruptedException {
         if(isDisplayed(containerCalendar)){
             waitElementToBeClickable(containerCalendar,5);
             elegirFechaDespDe(31);
@@ -502,17 +502,17 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void ingresarOrigenTraslado(){
+    public void ingresarOrigenTraslado(String string){
         if(isDisplayed(txtAeropuertoOrigen)){
-            type("Santiago Chile", txtAeropuertoOrigen);
+            type(string, txtAeropuertoOrigen);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
         }
     }
 
-    public void ingresarDestinoTraslado(){
+    public void ingresarDestinoTraslado(String string){
         if(isDisplayed(txtAeropuertoDestino)){
-            type("La Serena Chile", txtAeropuertoDestino);
+            type(string, txtAeropuertoDestino);
             waitElementToBeClickable(primerElementoLT, 5);
             click(primerElementoLT);
         }
@@ -594,7 +594,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void elegirFechaDespDe(int diasDesp) throws ParseException {
+    public void elegirFechaDespDe(int diasDesp) throws ParseException, InterruptedException {
         String actualDate = obtenerDia(); //Hoy retorna "2021-05-04"
         String fechaActual[] = actualDate.split("-");
         String actualDay = fechaActual[2];
@@ -621,6 +621,7 @@ public class JetSmartHomePage extends SeleniumBase{
             mesMostrado = getText(mesMostradoT);
         }
         waitNumberOfElementsToBeMoreThan(diaDisponibleCT,0);
+        sleep(500);
         for (WebElement dia : findElements(diaDisponibleCT)) {
             String atributoAriaLabel = getAttribute(dia,"aria-label");
             if (atributoAriaLabel.contains(diaABuscar)) {
