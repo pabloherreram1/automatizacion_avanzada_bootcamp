@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = {"automationcraft.testcreation.jetsmartGrupo5.steps", "automationcraft.engine.bdd"},
         plugin = {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                   "timeline:test-output-thread"},
-        tags = "@TrasladoBajo"
+        tags = "@VueloMedio"
 )
 public class reg_001_jetsmartRunnerG5 {
 }

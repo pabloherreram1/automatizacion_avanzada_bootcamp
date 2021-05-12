@@ -6,7 +6,7 @@
   @bootcamp @G5 @VueloAlto
     Scenario: El usuario modifica un vuelo de ida para uno mas economico
       Given soy el usuario e ingreso a la pagina "JetSmart"
-      When selecciono "Santiago de Chile" en el campo Origen
+      When selecciono "Santiago" en el campo Origen
       And selecciono "Buenos Aires" en el campo Destino
       And Seleciono el Checkbox de Ida
       And Seleciona la primera fecha disponible ida
@@ -28,8 +28,9 @@
     @bootcamp @G5 @VueloMedio
     Scenario: El usuario busca un vuelo de ida y vuelta
       Given soy el usuario e ingreso a la pagina "JetSmart"
-      When selecciono "Santiago de Chile" en el campo Origen
-      And selecciono "Buenos Aires" en el campo Destino
+      When selecciono "Santiago" en el campo Origen
+      And selecciono "Buenos Aires" en el campo Destino medio
+      And selecciono ckeck ida y vuelta
       And Seleciona la primera fecha disponible ida
       And Seleciono la vuelta dos semanas posterior a la fecha de ida
       And presiono BuscarSmart
@@ -39,6 +40,6 @@
     @bootcamp @G5 @VueloBajo
     Scenario: El sistema no logra encontrar destino
       Given soy el usuario e ingreso a la pagina "JetSmart"
-      When selecciono "Santiago, Chile" en el campo Origen
+      When selecciono "Santiago" en el campo Origen
       And selecciono "AAAAA" en el campo Destino
       Then Aparece la alerta "No hay Resultados"

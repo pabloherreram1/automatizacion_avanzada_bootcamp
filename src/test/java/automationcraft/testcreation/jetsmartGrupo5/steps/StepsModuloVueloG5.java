@@ -7,6 +7,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.text.ParseException;
+
 public class StepsModuloVueloG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
 
@@ -19,27 +21,35 @@ public class StepsModuloVueloG5 {
 
     @And("selecciono {string} en el campo Origen")
     public void selecciono_en_el_campo_Origen(String string){
-        homePageG5.ingresoOrigenVueloBajo();
+        homePageG5.ingresoOrigenVuelo(string);
     }
 
     @And("selecciono {string} en el campo Destino")
     public void selecciono_en_el_campo_Destino(String string){
-        homePageG5.ingresoDestinoVueloBajo();
+        homePageG5.ingresoDestinoVueloBajo(string);
     }
 
+    @And("selecciono {string} en el campo Destino medio")
+    public void selecciono_en_el_campo_Destino_medio(String string){
+        homePageG5.ingresoDestinoVueloMedio(string);
+    }
     @And("Seleciono el Checkbox de Ida")
-    public void Seleciono_el_Checkbox_de_Ida(String string){
+    public void Seleciono_el_Checkbox_de_Ida(){
 
+    }
+    @And("selecciono ckeck ida y vuelta")
+    public void selecciono_ckeck_ida_y_vuelta(){
+        homePageG5.checkIdaYVueltaMedio();
     }
 
     @And("Seleciona la primera fecha disponible ida")
-    public void Seleciona_la_primera_fecha_disponible_ida(String string){
-
+    public void Seleciona_la_primera_fecha_disponible_ida(){
+        homePageG5.primeraFechaDisponibleTraslado();
     }
 
     @And("Seleciono la vuelta dos semanas posterior a la fecha de ida")
-    public void Seleciono_la_vuelta_dos_semanas_posterior_a_la_fecha_de_ida(String string){
-
+    public void Seleciono_la_vuelta_dos_semanas_posterior_a_la_fecha_de_ida() throws ParseException {
+        homePageG5.vueltaDosSemanasPosteriorTraslado();
     }
 
     @And("Seleciono un Adulto")
@@ -53,8 +63,8 @@ public class StepsModuloVueloG5 {
     }
 
     @And("presiono BuscarSmart")
-    public void presiono_BuscarSmart(String string){
-
+    public void presiono_BuscarSmart(){
+        homePageG5.presionarBotonBuscarTraslado();
     }
 
     @And("cierro la ventana club descuento")
@@ -106,7 +116,7 @@ public class StepsModuloVueloG5 {
 
     @Then("Se muestra los vuelos en las fechas y lugares correspondientes")
     public void Se_muestra_los_vuelos_en_las_fechas_y_lugares_correspondientes(){
-
+        homePageG5.alertaVueloMedio();
     }
 
     @Then("Aparece la alerta {string}")

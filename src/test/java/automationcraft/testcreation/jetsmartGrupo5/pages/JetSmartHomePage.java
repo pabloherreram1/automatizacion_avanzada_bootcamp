@@ -179,19 +179,26 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void formVueloMedio() throws ParseException {
-        if(isDisplayed(tabVuelo)){
-            type("Santiago", txtOrigen);
-            click(txtOrigen);
-            waitElementToBeClickable(findElement(esperaOrigenCL, findElement(tabVuelo)), 10);
-            click(esperaOrigenCL);
-            type("Buenos Aires", txtDestino);
+
+    //_________VueloMEdio___________________
+    public void ingresoDestinoVueloMedio(String string){
+        if(isDisplayed(txtDestino)){
             click(txtDestino);
+            type(string, txtDestino);
+            waitElementToBeClickable(findElement(txtDestino, findElement(tabVuelo)), 10);
             waitElementToBeClickable(findElement(esperaDestinoAR, findElement(tabVuelo)), 10);
             click(esperaDestinoAR);
-            waitElementDesappear(loaderTabVuelo, findElement(tabVuelo));
-            waitElementToBePresent(CheckIdayVuelta, 3);
+        }
+    }
+
+    public void checkIdaYVueltaMedio(){
+        if(isDisplayed(CheckIdayVuelta)){
             click(CheckIdayVuelta);
+        }
+    }
+
+    public void primeraFechaDisponibleTraslado(){
+        if(isDisplayed(calendarIda)){
             click(calendarIda);
             for (WebElement mes: findElements(listmeses)) {
                 boolean out = false;
@@ -205,7 +212,11 @@ public class JetSmartHomePage extends SeleniumBase{
                 if(out==true)
                     break;
             }
+        }
+    }
 
+    public void vueltaDosSemanasPosteriorTraslado()throws ParseException{
+        if(isDisplayed(calendarVuelta)){
             click(calendarVuelta);
             int diasSalteados = 14;
             String dosSemanasDesp = obtenerDiaCambiado2(getAttribute(diaSelecionado,"aria-label"),diasSalteados);
@@ -225,8 +236,17 @@ public class JetSmartHomePage extends SeleniumBase{
                 }catch (StaleElementReferenceException e){
                 }
             }while(!(findElements(diaSelecionado).size()>1));
-            click(btnBuscar);
+        }
+    }
 
+    public void presionarBotonBuscarTraslado(){
+        if(isDisplayed(btnBuscar)){
+            click(btnBuscar);
+        }
+    }
+
+    public void alertaVueloMedio(){
+        if(isDisplayed(listVuelos)){
             List<WebElement> vuelos = findElements(listVuelos);
             String vueloIDA = vuelos.get(0).getText();
             String vueloVUELTA = vuelos.get(1).getText();
@@ -236,19 +256,19 @@ public class JetSmartHomePage extends SeleniumBase{
     }
 
     //-----------Vuelo Bajo--------------------------
-    public void ingresoOrigenVueloBajo(){
+    public void ingresoOrigenVuelo(String string){
         if(isDisplayed(txtOrigen)){
-            type("Santiago", txtOrigen);
+            type(string, txtOrigen);
             click(txtOrigen);
             waitElementToBeClickable(findElement(esperaOrigenCL, findElement(tabVuelo)), 10);
             click(esperaOrigenCL);
         }
     }
 
-    public void ingresoDestinoVueloBajo(){
+    public void ingresoDestinoVueloBajo(String string){
         if(isDisplayed(txtDestino)){
             click(txtDestino);
-            type("AAAAA", txtDestino);
+            type(string, txtDestino);
             waitElementToBeClickable(findElement(txtDestino, findElement(tabVuelo)), 10);
         }
     }
