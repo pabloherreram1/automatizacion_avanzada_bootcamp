@@ -1,5 +1,6 @@
 #Feature Grupo5: Mostrar paquetes con filtros.
 
+
   Feature: El usuario debe filtrar por presupuesto, populares y estrellas para "Londres".
 
     @bootcamp @G5 @HotelAlto

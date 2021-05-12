@@ -235,21 +235,29 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void formVueloBajo(){
+    //-----------Vuelo Bajo--------------------------
+    public void ingresoOrigenVueloBajo(){
         if(isDisplayed(txtOrigen)){
             type("Santiago", txtOrigen);
             click(txtOrigen);
             waitElementToBeClickable(findElement(esperaOrigenCL, findElement(tabVuelo)), 10);
             click(esperaOrigenCL);
+        }
+    }
+
+    public void ingresoDestinoVueloBajo(){
+        if(isDisplayed(txtDestino)){
             click(txtDestino);
             type("AAAAA", txtDestino);
             waitElementToBeClickable(findElement(txtDestino, findElement(tabVuelo)), 10);
-
-            waitVisibilityOfElement(noHayResultado);
-            Assert.assertEquals("No hay resultados.", getText(noHayResultado));
-
         }
     }
+
+    public void alertaDeVueloBajo(){
+        waitVisibilityOfElement(noHayResultado);
+        Assert.assertEquals("No hay resultados.", getText(noHayResultado));
+    }
+//--------------------------------------------------------------------------------------
 
     //Hoteles
 

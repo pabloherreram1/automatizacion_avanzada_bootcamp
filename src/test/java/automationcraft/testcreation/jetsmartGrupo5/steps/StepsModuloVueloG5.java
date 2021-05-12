@@ -1,29 +1,30 @@
 package automationcraft.testcreation.jetsmartGrupo5.steps;
 
+import automationcraft.engine.selenium.DriverFactory;
+import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartHomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepsModuloVueloG5 {
+    private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
+
+
     @Given("soy el usuario e ingreso a la pagina {string}")
     public void soy_el_usuario_e_ingreso_a_la_pagina(String string){
-
-    }
-
-    @When("ingreso al formulario de vuelo")
-    public void ingreso_al_formulario_de_vuelo(String string){
-
+        homePageG5.goToUrl("https://jetsmart.com/cl/es/");
+        homePageG5.cerrarModuloSuscribete();
     }
 
     @And("selecciono {string} en el campo Origen")
     public void selecciono_en_el_campo_Origen(String string){
-
+        homePageG5.ingresoOrigenVueloBajo();
     }
 
     @And("selecciono {string} en el campo Destino")
     public void selecciono_en_el_campo_Destino(String string){
-
+        homePageG5.ingresoDestinoVueloBajo();
     }
 
     @And("Seleciono el Checkbox de Ida")
@@ -103,14 +104,14 @@ public class StepsModuloVueloG5 {
 
     }
 
-    @Then("Aparece la alerta {string}")
-    public void Aparece_la_alerta(String string){
-
-    }
-
     @Then("Se muestra los vuelos en las fechas y lugares correspondientes")
     public void Se_muestra_los_vuelos_en_las_fechas_y_lugares_correspondientes(){
 
+    }
+
+    @Then("Aparece la alerta {string}")
+    public void Aparece_la_alerta(String string){
+        homePageG5.alertaDeVueloBajo();
     }
 
 
