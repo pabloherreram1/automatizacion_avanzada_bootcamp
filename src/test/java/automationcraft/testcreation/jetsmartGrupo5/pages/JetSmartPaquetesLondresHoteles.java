@@ -16,6 +16,7 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
     private By bodyNoHover= By.cssSelector("body.no-hover");
     private By overlayFiltros = By.cssSelector("div.sr-usp-overlay.sr-usp-overlay--wide");
     private By resultados = By.cssSelector("div.sr_item");
+    private By cantFiltroAplicados = By.cssSelector("div.barrel_o_filters a");
 
     String filtroPresupuesto = "";
     String filtroPop = "";
@@ -27,12 +28,12 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
         waitNmberOfElementsToBe(overlayFiltros,0);
     }
 
+
     public void selecionFiltroPresupuesto(){
         WebElement filtroDeseado = null;
         for (WebElement object: findElements(ContainerFiltros)) {
             String fnlist = object.getText();
             if(fnlist.contains("Tu presupuesto (por noche)")){
-                System.out.println("Entre en el PRIMER IF");
                 filtroDeseado = object;
                 filtroPresupuesto = findElement(SpanFiltros, object).getText();
                 filtroDeseado.findElement(btnFiltroPresupuesto).click();
@@ -46,7 +47,6 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
         for (WebElement object: findElements(ContainerFiltros)) {
             String nombreFiltro = object.getText();
             if(nombreFiltro.contains("Filtros populares")){
-                System.out.println("Le asigne un nuevo object en popu");
                 filtroDeseado = object;
             }
         }
@@ -80,6 +80,12 @@ public class JetSmartPaquetesLondresHoteles extends SeleniumBase {
         waitNumberOfElementsToBeMoreThan(resultados,0);
         int cantResultados = findElements(resultados).size();
         Assert.assertTrue(cantResultados>0);
+    }
+
+    public void verificar3filtrosAplicados() throws InterruptedException {
+        waitElementDesappear(overlayFiltros);
+        sleep(500);
+        Assert.assertEquals(3,findElements(cantFiltroAplicados).size());
     }
 }
 

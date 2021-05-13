@@ -54,22 +54,22 @@ public class StepsModuloHotelG5 {
 
     @And("Selecionar el primer resultado del Checkbox en la categoria presupuesto")
     public void Selecionar_el_primer_resultado_del_Checkbox_en_la_categoria_presupuesto(){
-
+        LondresHoteles.selecionFiltroPresupuesto();
     }
 
-    @And("Selecionar el checkbox de filtros populares la opcion {string}")
-    public void Selecionar_el_checkbox_de_filtros_populares_la_opcion(){
-
+    @And("Selecionar el checkbox de filtros populares la opcion Hoteles")
+    public void Selecionar_el_checkbox_de_filtros_populares_la_opcion_Hoteles(){
+        LondresHoteles.SelecionFiltroPopulares();
     }
 
-    @And("Selecionar el Checkbox de estrellas la opcion {string}")
-    public void Selecionar_el_Checkbox_de_estrellas_la_opcion(String string){
-
+    @And("Selecionar el Checkbox de estrellas la opcion 3 Estrellas")
+    public void Selecionar_el_Checkbox_de_estrellas_la_opcion_3_Estrellas(){
+        LondresHoteles.SelecionFiltroEstrellas();
     }
 
     @Then("Se filtra los resultados y solo se muestran resultados pertenecientes a los 3 filtros aplicados")
-    public void Se_filtra_los_resultados_y_solo_se_muestran_resultados_pertenecientes_a_los_3_filtros_aplicados(){
-
+    public void Se_filtra_los_resultados_y_solo_se_muestran_resultados_pertenecientes_a_los_3_filtros_aplicados() throws InterruptedException {
+        LondresHoteles.verificar3filtrosAplicados();
     }
 
     @Then("Se muestra al menos un resultado alojamiento en Londres con una habitación")

@@ -12,8 +12,8 @@
       And Agregar fecha final de alojamiento de dos semanas posterior
       And presionar Buscar hotel
       And Selecionar el primer resultado del Checkbox en la categoria presupuesto
-      And Selecionar el checkbox de filtros populares la opcion "Hoteles"
-      And Selecionar el Checkbox de estrellas la opcion "3 Estrellas"
+      And Selecionar el checkbox de filtros populares la opcion Hoteles
+      And Selecionar el Checkbox de estrellas la opcion 3 Estrellas
       Then Se filtra los resultados y solo se muestran resultados pertenecientes a los 3 filtros aplicados
 
 

@@ -139,23 +139,6 @@ public class JetSmartHomePage extends SeleniumBase{
 
  */
 
-    //Vuelos
-    public void formVueloAlto() throws InterruptedException {
-        if(isDisplayed(tabVuelo)){
-
-
-
-
-
-
-
-
-
-
-            click(btnBuscar);
-
-        }
-    }
 
     //___________Vuelo Alto___________________________
     public void checkidaVuelo(){
@@ -280,29 +263,7 @@ public class JetSmartHomePage extends SeleniumBase{
     }
 //--------------------------------------------------------------------------------------
 
-    //Hoteles
 
-    public void formHotelesAlto() throws ParseException {
-        if(isDisplayed(btnHoteles)){
-            click(btnHoteles);
-            cambiarAiframe(IframeHotel);
-            clearTxtFromInput(txtDestinoHotel);
-            type("Londres", txtDestinoHotel);
-            click(calendarIdaHotel);
-            elegirPrimerDiaDisponible(calendarIdaHotel,nombreDelMes,calendarioHotel,diaDelMes);
-
-            click(calendarVueltaHotel);
-            //proceso calendar VUELTA 2 semanas
-            elegirCheckOutEn2Semanas();
-            click(btnBuscarHotel);
-            salirDelIframe();
-            cambiarDeTab(1);
-
-            //Selecionar los 3 filtros
-        }
-
-
-    }
 
     //____________Hotel Medio____________
     public void ingresoOrigenHotel(String string){

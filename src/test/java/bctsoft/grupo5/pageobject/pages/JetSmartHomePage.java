@@ -266,8 +266,8 @@ public class JetSmartHomePage extends SeleniumBase{
             click(btnBuscarHotel);
             salirDelIframe();
             cambiarDeTab(1);
-
             //Selecionar los 3 filtros
+
         }
 
 
