@@ -501,6 +501,13 @@ public class JetSmartHomePage extends SeleniumBase{
             click(cantidadPasajeros1);
         }
     }
+    public void seleccionDosPasajeroTrasladoAlto(){
+        click(listPasajeroTraslado);
+        waitElementToBeClickable(cantidadPasajeros2, 5);
+        if(isDisplayed(cantidadPasajeros2)){
+            click(cantidadPasajeros2);
+        }
+    }
 
     public void btnTrasladoBajo(){
         if(isDisplayed(btnBuscarTraslado)){

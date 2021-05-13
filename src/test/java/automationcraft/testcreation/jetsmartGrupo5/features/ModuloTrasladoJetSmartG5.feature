@@ -5,7 +5,11 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
   @bootcamp @G5 @TrasladoAlto
   Scenario: El usuario realiza una busqueda de traslado
     Given soy el usuario e ingreso a la pagina "JetSmart"
-    When Ingreso al formulario Traslados
+    When Ingreso al formulario Iniciar Sesion
+    And Escribo en el campo Correo Electronico "Pabloherreram1@hotmail.com"
+    And Escribo en el campo contrasena "pabloprueba123"
+    And Seleciono el boton "Inicia Sesion" inicio
+    And Ingreso al formulario Traslados
     And Seleciono radio boton "Ida"
     And selecciono "Ezeiza" en el campo Origen traslado
     And selecciono "Newbery" en el campo Destino traslado
@@ -20,7 +24,7 @@ Feature: El Usuario al reservar un transporte entre dos aeropuertos del mismo pa
     And Ingresar codigo pais "Islas Caiman" del pasajero
     And Ingresar numero celular del pasajero "88839039"
     And Ingresar numero de vuelo del pasajero "CD123"
-    And presionar boton "ir a Caja"
+    And presionar boton "ir a Caja" T
     Then Se muestra en pantalla los medios de pago disponibles y los datos del transporte
 
 

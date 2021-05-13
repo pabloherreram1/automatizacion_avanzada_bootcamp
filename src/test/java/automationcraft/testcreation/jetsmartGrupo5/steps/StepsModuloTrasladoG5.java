@@ -3,6 +3,8 @@ package automationcraft.testcreation.jetsmartGrupo5.steps;
 import automationcraft.engine.selenium.DriverFactory;
 import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartHomePage;
 import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartResultado2Traslado;
+import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartResultado3Traslado;
+import automationcraft.testcreation.jetsmartGrupo5.pages.JetSmartUltimaTraslado;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,6 +16,9 @@ import java.text.ParseException;
 public class StepsModuloTrasladoG5 {
     private JetSmartHomePage homePageG5 = new JetSmartHomePage(DriverFactory.getDriver());
     private JetSmartResultado2Traslado Resultado2Traslado = new JetSmartResultado2Traslado(DriverFactory.getDriver());
+    private JetSmartResultado3Traslado Resultado3Traslado = new JetSmartResultado3Traslado(DriverFactory.getDriver());
+    private JetSmartUltimaTraslado UltimaTraslado = new JetSmartUltimaTraslado(DriverFactory.getDriver());
+
     @Given("soy el usuario e ingreso a la pagina {string} traslado")
     public void soy_el_usuario_e_ingreso_a_la_pagina_traslado(String string){
         homePageG5.goToUrl("https://jetsmart.com/cl/es/");
@@ -82,7 +87,7 @@ public class StepsModuloTrasladoG5 {
 
     @And("Seleciona 2 pasajeros")
     public void Seleciona_2_pasajeros(){
-
+        homePageG5.seleccionDosPasajeroTrasladoAlto();
     }
 
     @And("presiono el boton Buscar traslado")
@@ -96,44 +101,47 @@ public class StepsModuloTrasladoG5 {
 
     @And("Click en reservar ahora en el primer resultado")
     public void Click_en_reservar_ahora_en_el_primer_resultado(){
-
+        Resultado2Traslado.reservarAhora();
     }
 
     @And("Ingresar nombre del pasajero {string}")
     public void Ingresar_nombre_del_pasajero(String string){
-
+        Resultado3Traslado.nombrePasajeroT();
     }
 
     @And("Ingresar email del pasajero {string}")
     public void Ingresar_email_del_pasajero(String string){
-
+        Resultado3Traslado.correoPasajeroT();
     }
 
     @And("Ingresar email de confirmacion del pasajero {string}")
     public void Ingresar_email_de_confirmacion_del_pasajero(String string){
-
+        Resultado3Traslado.confirmarCorreoPasajeroT();
     }
 
     @And("Ingresar codigo pais {string} del pasajero")
     public void Ingresar_codigo_pais_del_pasajero(String string){
-
+        Resultado3Traslado.codigoAresPasajeroT();
     }
 
     @And("Ingresar numero celular del pasajero {string}")
     public void Ingresar_numero_celular_del_pasajero(String string){
-
+        Resultado3Traslado.numeroCelularPasajeroT();
     }
 
     @And("Ingresar numero de vuelo del pasajero {string}")
     public void Ingresar_numero_de_vuelo_del_pasajero(String string){
-
+        Resultado3Traslado.numeroVueloPasajeroT();
     }
 
-
+    @And("presionar boton {string} T")
+    public void presionar_boton_T(String string){
+        Resultado3Traslado.btnIraCajaT();
+    }
 
     @Then("Se muestra en pantalla los medios de pago disponibles y los datos del transporte")
     public void Se_muestra_en_pantalla_los_medios_de_pago_disponibles_y_los_datos_del_transporte() {
-
+        UltimaTraslado.verificarResumenPago();
     }
 
     @Then("Se muestran las opciones de traslado del aeropueto de España, La Serena.")
