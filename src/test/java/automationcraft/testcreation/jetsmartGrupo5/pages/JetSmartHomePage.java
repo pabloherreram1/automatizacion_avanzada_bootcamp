@@ -142,43 +142,43 @@ public class JetSmartHomePage extends SeleniumBase{
     //Vuelos
     public void formVueloAlto() throws InterruptedException {
         if(isDisplayed(tabVuelo)){
-            type("Santiago", txtOrigen);
-            click(txtOrigen);
-            waitElementToBeClickable(findElement(esperaOrigenCL, findElement(tabVuelo)), 10);
-            click(esperaOrigenCL);
-            type("Buenos Aires", txtDestino);
-            click(txtDestino);
-            waitElementToBeClickable(findElement(esperaDestinoAR, findElement(tabVuelo)), 10);
-            click(esperaDestinoAR);
-            waitElementDesappear(loaderTabVuelo, findElement(tabVuelo));
-            waitElementToBePresent(CheckIda, 3);
-            click(CheckIda);
-            click(calendarIda);
 
-            for (WebElement mes: findElements(listmeses)) {
-                boolean out = false;
-                for (WebElement diaT: findElements(diastotales, mes)) {
-                    if(!findElements(diasInhabilitados, mes).contains(diaT)){
-                        diaT.click();
-                        out = true;
-                        break;
-                    }
-                }
-                if(out==true)
-                    break;
-            }
 
-            click(listPasajero);
-            sleep(500);
-            waitElementToBeClickable(cajaopen, 3);
-            click(btnPasajeroIncrementoNinos);
-            click(btnPasajeroIncrementoNinos);
-            click(btnOkPasajero);
+
+
+
+
+
+
+
+
             click(btnBuscar);
 
         }
     }
 
+    //___________Vuelo Alto___________________________
+    public void checkidaVuelo(){
+        if(isDisplayed(tabVuelo)){
+            waitElementDesappear(loaderTabVuelo, findElement(tabVuelo));
+            waitElementToBePresent(CheckIda, 3);
+            click(CheckIda);
+        }
+    }
+
+    public void select1Adulto(){
+        if(isDisplayed(listPasajero)){
+            click(listPasajero);
+        }
+    }
+
+    public void select2nino() throws InterruptedException {
+        sleep(500);
+        waitElementToBeClickable(cajaopen, 3);
+        click(btnPasajeroIncrementoNinos);
+        click(btnPasajeroIncrementoNinos);
+        click(btnOkPasajero);
+    }
 
     //_________VueloMEdio___________________
     public void ingresoDestinoVueloMedio(String string){
@@ -239,7 +239,7 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void presionarBotonBuscarTraslado(){
+    public void presionarBotonBuscarVuelo(){
         if(isDisplayed(btnBuscar)){
             click(btnBuscar);
         }
@@ -270,6 +270,7 @@ public class JetSmartHomePage extends SeleniumBase{
             click(txtDestino);
             type(string, txtDestino);
             waitElementToBeClickable(findElement(txtDestino, findElement(tabVuelo)), 10);
+            click(esperaDestinoAR);
         }
     }
 

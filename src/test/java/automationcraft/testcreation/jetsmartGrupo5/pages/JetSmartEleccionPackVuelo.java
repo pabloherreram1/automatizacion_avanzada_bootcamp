@@ -14,8 +14,9 @@ public class JetSmartEleccionPackVuelo extends SeleniumBase{
     private By btnLoQuiero = By.cssSelector("button.bundle-button:not([style*='display: none'])");
     private By ContainerBtnLoquiero = By.cssSelector("flight-fee div.bundles-container.hidden-xs div.bundle-container:not(.simple,.full)");
 
-    public void packVuelo(){
-        waitElementToBeClickable(ContainerBtnLoquiero, 5);
+    public void packVuelo() throws InterruptedException {
+        waitElementToBeClickable(ContainerBtnLoquiero, 10);
+        sleep(500);
         findElement(btnLoQuiero, findElement(ContainerBtnLoquiero)).click();
     }
 }

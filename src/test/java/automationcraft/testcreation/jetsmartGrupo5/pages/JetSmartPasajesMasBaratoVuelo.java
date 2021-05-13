@@ -14,10 +14,18 @@ public class JetSmartPasajesMasBaratoVuelo extends SeleniumBase{
     private By btnContinuarPasajeBarato = By.xpath("//button[@id='calendarSubmit']");
 
 
-    public void fechaProximaBarata(){
-        waitElementToBePresent(btnFechaProxima, 5);
+    public void fechaProximaBarata() throws InterruptedException {
+        waitElementToBeClickable(btnFechaProxima,5);
+        sleep(1000);
         if(isDisplayed(btnFechaProxima)){
             click(btnFechaProxima);
+        }
+    }
+
+    public void ponerContinuar() throws InterruptedException {
+        waitElementToBeClickable(btnContinuarPasajeBarato,5);
+        sleep(500);
+        if(isDisplayed(btnContinuarPasajeBarato)){
             click(btnContinuarPasajeBarato);
         }
     }

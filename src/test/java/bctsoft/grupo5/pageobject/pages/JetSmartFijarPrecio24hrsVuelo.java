@@ -22,17 +22,20 @@ public class JetSmartFijarPrecio24hrsVuelo extends SeleniumBase{
         if(isDisplayed(btnLoquieroFijarPrecio)){
             waitElementToBeClickable(btnLoquieroFijarPrecio,10);
             click(btnLoquieroFijarPrecio);
-
+            waitElementDesappear(loaderOverlay);
             waitElementToBeClickable(cuadroOpcionesFijarPrecio,10);
             waitElementToBeClickable(btnOption24hrs, 10);
             click(btnOption24hrs);
 
             waitElementDesappear(loaderOverlay);
             waitElementToBeClickable(ContainerbtnContinuar, 10);
-            sleep(500);
-            click(btnContinuar);
-            click(btnContinuar);
         }
+    }
+
+    public void continuarBtn24hrs() throws InterruptedException {
+        sleep(500);
+        click(btnContinuar);
+        click(btnContinuar);
     }
 }
 

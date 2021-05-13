@@ -6,17 +6,21 @@
   @bootcamp @G5 @VueloAlto
     Scenario: El usuario modifica un vuelo de ida para uno mas economico
       Given soy el usuario e ingreso a la pagina "JetSmart"
-      When selecciono "Santiago" en el campo Origen
+      When Ingreso al formulario Iniciar Sesion
+      And Escribo en el campo Correo Electronico "Pabloherreram1@hotmail.com"
+      And Escribo en el campo contrasena "pabloprueba123"
+      And Seleciono el boton "Inicia Sesion" inicio
+      And selecciono "Santiago" en el campo Origen
       And selecciono "Buenos Aires" en el campo Destino
       And Seleciono el Checkbox de Ida
       And Seleciona la primera fecha disponible ida
       And Seleciono un Adulto
       And Seleciono dos ninos
       And presiono BuscarSmart
-      And cierro la ventana club descuento
-      And Seleciono el boton "Vuelo Mas barato"
-      And Selecion la segunda fecha de vuelo disponible del proximo mes
+      And Seleciono el boton Vuelo Mas barato
+      And Selecion la primera fecha de vuelo disponible del proximo mes
       And Presiono el boton continuar
+      And presiono precio vuelo
       And Seleciono el Pack de vuelo mas barato
       And fijo precio por 24hrs
       And Clickear en Continuar

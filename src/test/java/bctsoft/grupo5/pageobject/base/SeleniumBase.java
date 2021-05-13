@@ -36,7 +36,9 @@ public class SeleniumBase {
         return element.findElement(locator);
     }
 
-
+    public String getURL(){
+        return driver.getCurrentUrl();
+    }
     public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
